@@ -150,7 +150,7 @@ Examples:
 
 ```text
 WeatherWidget → weatherService → WeatherProvider
-BlogArticle → blogService → BloggerProvider
+BlogArticle → blogService → InzaghiBlogAggregatorProvider
 PortalContentGrid → portalService → NotionProvider
 ```
 
@@ -163,7 +163,7 @@ Initial implementations may use mock/local providers. UI must not depend directl
 Primary navigation:
 - Home
 - Apps
-- Learn
+- Explore
 - Blog
 - About
 
@@ -172,7 +172,7 @@ Apps:
 - AI Apps
 - Widgets
 
-Learn:
+Explore:
 - Technology Tutorials
 - Learning Portal
 - IT Project Lists
@@ -256,7 +256,7 @@ Components:
 PortalCard, PortalHeader, PortalSearch, PortalFilters, CategoryFilter, TagFilter, FeaturedContent, ContentGrid, ContentList, Pagination, EmptyState.
 
 ### Blog
-Use mock/local data first; Blogger API later.
+Use mock/local data first; Inzaghi's Blog Aggregator later.
 Components:
 BlogCard, BlogGrid, BlogHeader, BlogArticle, BlogMeta, RelatedPosts, BlogPagination.
 

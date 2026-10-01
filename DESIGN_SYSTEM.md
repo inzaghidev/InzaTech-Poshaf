@@ -18,7 +18,57 @@ Avoid AI-generated clichés: random gradients, excessive neon, glowing borders e
 
 ------------------------------------------------------------------------
 
-## 3. Theme Strategy
+### Explore Information Architecture
+
+`Explore` is the application/resource discovery area.
+
+### Tools
+
+#### Converters
+- Common Converters
+- Engineering Converters
+- Electricity Converters
+- Fluid Converters
+- Heat Converters
+
+#### Calculators
+- Calculations Calculator
+- Mathematics Calculator
+- Statistics Calculator
+- Geometry Calculator
+- Health Calculator
+- Finance Calculator
+
+#### Formatters
+- Text Formatters
+- Code Formatters
+- Beautifiers
+- Minifier
+
+#### Other
+- File Converter
+- Generators
+- Utilities
+- Tester Tools
+
+### AI Apps
+- AI Chatbot
+- AI Code Generator
+- AI Image Generator
+- AI Writer
+
+### Portals
+
+Portals remain a distinct content/product category and are not renamed to Explore:
+
+- Technology Tutorials
+- IT Project Lists
+- Language Portal
+- Learning Portal
+- Career Portal
+- Muslims Portal
+
+# 3. Theme Strategy
 
 InzaTech supports two themes:
 1. Light Mode — default and primary
@@ -190,7 +240,7 @@ Page headers should be strong but compact. Avoid oversized heroes on utility/dis
 Primary navigation:
 - Home
 - Apps
-- Learn
+- Explore
 - Blog
 - About
 

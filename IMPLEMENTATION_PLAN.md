@@ -22,7 +22,7 @@ Apps:
 - AI Apps
 - Widgets
 
-Learn:
+Explore:
 - Technology Tutorials
 - Learning Portal
 - IT Project Lists
@@ -118,7 +118,7 @@ AppShell
 Header:
 - Home
 - Apps
-- Learn
+- Explore
 - Blog
 - About
 - theme switcher;
@@ -229,7 +229,7 @@ Use mock content first. Do not couple initial UI directly to Notion.
 Implement BlogHeader, BlogCard, BlogGrid, BlogArticle, BlogMeta, RelatedPosts, BlogPagination.
 
 Initial source: mock/local data.
-Future source: Blogger API.
+Future source: Inzaghi's Blog Aggregator.
 
 Prioritize reading typography, line length, hierarchy, media, and article navigation.
 
@@ -293,7 +293,7 @@ Prefer Server Components where possible.
 
 Only after the UI architecture is stable, integrate potential services:
 - Notion API;
-- Blogger API;
+- Inzaghi's Blog Aggregator;
 - AI provider APIs;
 - weather;
 - stocks;
