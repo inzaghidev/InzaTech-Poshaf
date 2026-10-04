@@ -1,0 +1,593 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>InzaTech Developer Tools Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#67f4b7",
+                    "surface-container-low": "#131b2e",
+                    "on-surface-variant": "#c7c4d8",
+                    "error-container": "#93000a",
+                    "on-secondary": "#003640",
+                    "secondary-container": "#03b5d3",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "primary-fixed": "#e2dfff",
+                    "on-secondary-container": "#00424e",
+                    "surface-container-high": "#222a3d",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-tertiary-fixed": "#002113",
+                    "surface-container": "#171f33",
+                    "primary-container": "#4f46e5",
+                    "secondary": "#4cd7f6",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-background": "#dae2fd",
+                    "on-tertiary": "#003824",
+                    "inverse-surface": "#dae2fd",
+                    "primary": "#c3c0ff",
+                    "on-secondary-fixed": "#001f26",
+                    "outline": "#918fa1",
+                    "on-primary-fixed": "#0f0069",
+                    "surface-bright": "#31394d",
+                    "on-primary": "#1d00a5",
+                    "on-primary-container": "#dad7ff",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#283044",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-variant": "#2d3449",
+                    "tertiary-container": "#006e4b",
+                    "outline-variant": "#464555",
+                    "surface-tint": "#c3c0ff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "surface": "#0b1326",
+                    "inverse-primary": "#4d44e3",
+                    "tertiary": "#4edea3",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-surface": "#dae2fd",
+                    "surface-dim": "#0b1326",
+                    "surface-container-lowest": "#060e20",
+                    "background": "#0b1326",
+                    "error": "#ffb4ab",
+                    "surface-container-highest": "#2d3449",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed": "#acedff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "xl": "32px",
+                    "margin-desktop": "40px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Geist"],
+                    "headline-lg-mobile": ["Geist"],
+                    "label-caps": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Geist"],
+                    "code-block": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "code-block": ["14px", {"lineHeight": "22px", "fontWeight": "450"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(19, 27, 46, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tool-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(195, 192, 255, 0.3);
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.1);
+        }
+        .active-ai-chip {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b1326; }
+        ::-webkit-scrollbar-thumb { background: #2d3449; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #464555; }
+
+        .nav-item-active {
+            color: #DAE2FD !important;
+            position: relative;
+        }
+        .nav-item-active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #DAE2FD;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Header / Search -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm px-margin-desktop py-md flex items-center justify-between gap-lg">
+<div class="flex items-center gap-xl">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">InzaTech</h2>
+<nav class="hidden lg:flex items-center gap-lg">
+<!-- 1. Home -->
+<a class="text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors" href="#">Home</a>
+<!-- 2. Widgets -->
+<a class="text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors" href="#">Widgets</a>
+<!-- 3. Portals (Dropdown) -->
+<div class="relative group">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors">
+                    Portals <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-md w-64 bg-surface-container-high border border-outline-variant rounded-xl shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50 p-md grid gap-sm">
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Technology Tutorials</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Learning Portal</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">IT Project Lists</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Language Portal</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Career Portal</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Muslims Portal</a>
+</div>
+</div>
+<!-- 4. Explore (Active/Dropdown) -->
+<div class="relative group">
+<button class="flex items-center gap-xs font-label-caps text-label-caps transition-colors nav-item-active">
+                    Explore <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-md w-64 bg-surface-container-high border border-outline-variant rounded-xl shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50 p-md grid gap-sm">
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Converters</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Calculators</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Generators</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Formatters</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">File Converter</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Utilities</a>
+<div class="border-t border-outline-variant my-xs"></div>
+<a class="p-sm text-primary font-bold text-body-sm" href="#">Browse all Apps →</a>
+</div>
+</div>
+<!-- 5. AI Apps (Dropdown) -->
+<div class="relative group">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors">
+                    AI Apps <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-md w-64 bg-surface-container-high border border-outline-variant rounded-xl shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50 p-md grid gap-sm">
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">AI Chatbot</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">AI Writer</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">AI Code Generator</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">AI Image Generator</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">AI Prompt Library</a>
+<div class="border-t border-outline-variant my-xs"></div>
+<a class="p-sm text-primary font-bold text-body-sm" href="#">Browse all AI Apps →</a>
+</div>
+</div>
+<!-- 6. Blog Media (Dropdown) -->
+<div class="relative group">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors">
+                    Blog Media <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-md w-56 bg-surface-container-high border border-outline-variant rounded-xl shadow-2xl opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-50 p-md grid gap-sm">
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Inzaghi's Blog</a>
+<a class="p-sm hover:bg-surface-variant rounded-lg text-body-sm" href="#">Inzaghi's Media</a>
+</div>
+</div>
+<!-- 7. Services -->
+<a class="text-on-surface-variant hover:text-primary font-label-caps text-label-caps transition-colors" href="#">Services</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">search</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">dark_mode</button>
+<button class="bg-primary text-on-primary px-lg py-2 rounded-lg font-bold hover:brightness-110 active:scale-95 transition-all text-body-sm">Get Started</button>
+</div>
+</header>
+<!-- Sidebar Navigation -->
+<aside class="w-64 fixed left-0 top-[73px] bg-surface-container/80 backdrop-blur-lg border-r border-white/5 shadow-lg flex flex-col p-md z-40 h-full">
+
+
+<nav class="flex-1 space-y-xs overflow-y-auto"><a class="flex items-center gap-md p-md rounded-lg bg-primary-container text-on-primary-container font-bold transition-all duration-200" href="#"><span class="material-symbols-outlined">apps</span><span class="font-label-caps text-label-caps">All Apps &amp; Tools</span></a><a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-all duration-200" href="#converters"><span class="material-symbols-outlined">sync_alt</span><span class="font-label-caps text-label-caps">Converters</span></a><a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-all duration-200" href="#calculators"><span class="material-symbols-outlined">calculate</span><span class="font-label-caps text-label-caps">Calculators</span></a><a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-all duration-200" href="#"><span class="material-symbols-outlined">token</span><span class="font-label-caps text-label-caps">Generators</span></a><a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-all duration-200" href="#formatters"><span class="material-symbols-outlined">data_object</span><span class="font-label-caps text-label-caps">Formatters</span></a><a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-all duration-200" href="#"><span class="material-symbols-outlined">attachment</span><span class="font-label-caps text-label-caps">File Converter</span></a><a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:translate-x-1 transition-all duration-200" href="#utilities"><span class="material-symbols-outlined">build</span><span class="font-label-caps text-label-caps">Utilities</span></a></nav>
+<div class="mt-auto pt-md border-t border-white/5 space-y-xs">
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-variant/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-caps text-label-caps">Account</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 min-h-screen mt-[73px] relative">
+<!-- Tool Grid Content -->
+<div class="p-margin-desktop space-y-xl">
+<!-- Hero Title -->
+<div class="max-w-3xl">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-md">Tools &amp; Utilities</h1>
+<p class="text-on-surface-variant text-body-md opacity-80">A precision-engineered collection of utilities for developers, engineers, and digital specialists. Fast, secure, and purely client-side.</p>
+</div>
+<!-- Quick Filters -->
+
+<!-- Category: Converters -->
+<section class="space-y-lg" id="converters">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="h-10 w-10 glass-panel rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">sync_alt</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Converters</h3>
+</div>
+<button class="flex items-center gap-xs text-primary hover:underline font-label-caps text-label-caps transition-all">More Converters <span class="material-symbols-outlined text-sm">chevron_right</span></button></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Common Converter -->
+<div class="glass-panel tool-card p-lg rounded-xl transition-all duration-300 group cursor-pointer flex flex-col h-full">
+<div class="flex items-start justify-between mb-md">
+<div class="h-10 w-10 bg-primary/10 rounded flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="transform: scale(1) rotate(0deg);">straighten</span>
+</div>
+<span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px] font-label-caps">POPULAR</span>
+</div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">Common Converter</h4>
+<p class="text-on-surface-variant text-body-sm flex-grow">Instant transformation of distance, weight, and volume units.</p>
+<div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors">
+<span class="text-label-caps font-label-caps">Launch Tool</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Engineering -->
+<div class="glass-panel tool-card p-lg rounded-xl transition-all duration-300 group cursor-pointer flex flex-col h-full">
+<div class="flex items-start justify-between mb-md">
+<div class="h-10 w-10 bg-tertiary/10 rounded flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="transform: scale(1) rotate(0deg);">precision_manufacturing</span>
+</div>
+</div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">Engineering</h4>
+<p class="text-on-surface-variant text-body-sm flex-grow">Pressure, torque, and energy density conversions for technical specs.</p>
+<div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors">
+<span class="text-label-caps font-label-caps">Launch Tool</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Fluid Dynamics -->
+<div class="glass-panel tool-card p-lg rounded-xl transition-all duration-300 group cursor-pointer flex flex-col h-full">
+<div class="flex items-start justify-between mb-md">
+<div class="h-10 w-10 bg-secondary/10 rounded flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="transform: scale(1) rotate(0deg);">water_drop</span>
+</div>
+</div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">Fluid Dynamics</h4>
+<p class="text-on-surface-variant text-body-sm flex-grow">Viscosity and flow rate calculations for industrial piping.</p>
+<div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors">
+<span class="text-label-caps font-label-caps">Launch Tool</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Calculators -->
+<section class="space-y-lg" id="calculators">
+<div class="flex items-center gap-md">
+<div class="h-10 w-10 glass-panel rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">calculate</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Calculators</h3>
+<button class="ml-auto flex items-center gap-xs text-primary hover:underline font-label-caps text-label-caps transition-all">More Calculators <span class="material-symbols-outlined text-sm">chevron_right</span></button></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<div class="glass-panel tool-card p-lg rounded-xl transition-all duration-300 group cursor-pointer flex flex-col h-full">
+<div class="flex items-start justify-between mb-md">
+<div class="h-10 w-10 bg-on-surface-variant/10 rounded flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" style="transform: scale(1) rotate(0deg);">functions</span>
+</div>
+</div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">Mathematics</h4>
+<p class="text-on-surface-variant text-body-sm flex-grow">Advanced algebraic functions and matrix operations for complex solving.</p>
+<div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors">
+<span class="text-label-caps font-label-caps">Launch Tool</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<div class="glass-panel tool-card p-lg rounded-xl transition-all duration-300 group cursor-pointer flex flex-col h-full">
+<div class="flex items-start justify-between mb-md">
+<div class="h-10 w-10 bg-error/10 rounded flex items-center justify-center text-error">
+<span class="material-symbols-outlined" style="transform: scale(1) rotate(0deg);">favorite</span>
+</div>
+</div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">Health &amp; Fitness</h4>
+<p class="text-on-surface-variant text-body-sm flex-grow">BMI, BMR, and nutritional macro tracking utilities.</p>
+<div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors">
+<span class="text-label-caps font-label-caps">Launch Tool</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<div class="glass-panel tool-card p-lg rounded-xl transition-all duration-300 group cursor-pointer flex flex-col h-full">
+<div class="flex items-start justify-between mb-md">
+<div class="h-10 w-10 bg-tertiary-container/20 rounded flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="transform: scale(1) rotate(0deg);">account_balance</span>
+</div>
+</div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">Finance Hub</h4>
+<p class="text-on-surface-variant text-body-sm flex-grow">Mortgage calculators, ROI estimations, and compound interest models.</p>
+<div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors">
+<span class="text-label-caps font-label-caps">Launch Tool</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Formatters -->
+<section class="space-y-lg" id="formatters">
+<div class="flex items-center gap-md">
+<div class="h-10 w-10 glass-panel rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">data_object</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Formatters &amp; Beautifiers</h3>
+<button class="ml-auto flex items-center gap-xs text-primary hover:underline font-label-caps text-label-caps transition-all">More Formatters <span class="material-symbols-outlined text-sm">chevron_right</span></button></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div class="md:col-span-1 glass-panel tool-card p-lg rounded-xl group cursor-pointer flex flex-col h-full">
+<div class="mb-md">
+<div class="h-10 w-10 bg-secondary/10 rounded flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="transform: scale(1) rotate(0deg);">text_fields</span>
+</div>
+</div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">Text Utilities</h4>
+<p class="text-on-surface-variant text-body-sm flex-grow">Case-conversion, character counting, and regex testing.</p>
+<div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors">
+<span class="text-label-caps font-label-caps">Launch Tool</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<div class="md:col-span-2 glass-panel tool-card p-lg rounded-xl group cursor-pointer relative overflow-hidden flex flex-col">
+<div class="relative z-10 flex flex-col h-full">
+<div class="flex items-center justify-between mb-lg">
+<div class="h-12 w-12 bg-primary/20 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" style="transform: scale(1) rotate(0deg);">code</span>
+</div>
+<span class="bg-tertiary/20 text-tertiary px-2 py-1 rounded text-[10px] font-label-caps">AI POWERED</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface font-bold mb-md">Code Beautifier</h4>
+<p class="text-on-surface-variant text-body-md mb-lg flex-grow">Prettify and minify JSON, HTML, CSS, and JS with neural validation.</p>
+<div class="flex gap-md">
+<button class="bg-primary text-on-primary px-xl py-2 rounded-lg font-bold hover:brightness-110 active:scale-95 transition-all text-sm">Launch Tool</button>
+</div>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[140px]">developer_mode</span>
+</div>
+</div>
+<div class="md:col-span-1 flex flex-col gap-lg">
+<div class="glass-panel tool-card p-lg rounded-xl group cursor-pointer flex-1">
+<span class="material-symbols-outlined text-tertiary mb-sm" style="transform: scale(1) rotate(0deg);">html</span>
+<h4 class="text-on-surface font-semibold text-body-md mb-xs">HTML Minifier</h4>
+<p class="text-on-surface-variant text-xs">Compress production code for speed.</p>
+</div>
+<div class="glass-panel tool-card p-lg rounded-xl group cursor-pointer flex-1">
+<span class="material-symbols-outlined text-tertiary mb-sm" style="transform: scale(1) rotate(0deg);">css</span>
+<h4 class="text-on-surface font-semibold text-body-md mb-xs">CSS Optimizer</h4>
+<p class="text-on-surface-variant text-xs">Analyze and prune unused styles.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: File Tools -->
+<section class="space-y-lg pb-xl" id="file-tools">
+<div class="flex items-center gap-md">
+<div class="h-10 w-10 glass-panel rounded-lg flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">folder_open</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">File Converters</h3>
+<button class="ml-auto flex items-center gap-xs text-primary hover:underline font-label-caps text-label-caps transition-all">More File Tools <span class="material-symbols-outlined text-sm">chevron_right</span></button></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<div class="glass-panel tool-card p-lg rounded-xl group cursor-pointer flex flex-col h-full">
+<div class="mb-md">
+<div class="h-10 w-10 bg-secondary/10 rounded flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="transform: scale(1) rotate(0deg);">attachment</span>
+</div>
+</div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">File Converter</h4>
+<p class="text-on-surface-variant text-body-sm flex-grow">Bulk image optimization and document format migration (PDF, Docx).</p>
+<div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors">
+<span class="text-label-caps font-label-caps text-[10px]">Launch Tool</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</div>
+</div>
+<div class="glass-panel tool-card p-lg rounded-xl group cursor-pointer flex flex-col h-full">
+<div class="mb-md">
+<div class="h-10 w-10 bg-primary/10 rounded flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="transform: scale(1) rotate(0deg);">token</span>
+</div>
+</div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">Generator</h4>
+<p class="text-on-surface-variant text-body-sm flex-grow">Secure hash generation, UUIDs, and cryptographically strong passwords.</p>
+<div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors">
+<span class="text-label-caps font-label-caps text-[10px]">Launch Tool</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</div>
+</div>
+<div class="glass-panel tool-card p-lg rounded-xl group cursor-pointer flex flex-col justify-center items-center border-dashed border-outline-variant/30 opacity-50 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-3xl mb-2" style="transform: scale(1) rotate(0deg);">add</span>
+<span class="text-label-caps font-label-caps text-xs">Request Tool</span>
+</div>
+<div class="glass-panel tool-card p-lg rounded-xl group cursor-pointer flex flex-col justify-center items-center border-dashed border-outline-variant/30 opacity-50 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-3xl mb-2" style="transform: scale(1) rotate(0deg);">auto_fix_high</span>
+<span class="text-label-caps font-label-caps text-xs">Coming Soon</span>
+</div>
+</div>
+</section><section class="space-y-lg pb-xl" id="utilities"><div class="flex items-center gap-md"><div class="h-10 w-10 glass-panel rounded-lg flex items-center justify-center text-secondary"><span class="material-symbols-outlined">build</span></div><h3 class="font-headline-md text-headline-md text-on-surface">Utilities</h3><a href="#utilities" class="ml-auto flex items-center gap-xs text-primary hover:underline font-label-caps text-label-caps transition-all">More Utilities <span class="material-symbols-outlined text-sm">chevron_right</span></a></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg"><div class="glass-panel tool-card p-lg rounded-xl transition-all duration-300 group cursor-pointer flex flex-col h-full"><div class="flex items-start justify-between mb-md"><div class="h-10 w-10 bg-primary/10 rounded flex items-center justify-center text-primary"><span class="material-symbols-outlined">folder_zip</span></div><span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-[10px] font-label-caps">COMPRESS</span></div><h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">File Compresser</h4><p class="text-on-surface-variant text-body-sm flex-grow">Lossless asset compression for PDFs, images, and archives.</p><div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors"><span class="text-label-caps font-label-caps">Launch Tool</span><span class="material-symbols-outlined text-sm">arrow_forward</span></div></div><div class="glass-panel tool-card p-lg rounded-xl transition-all duration-300 group cursor-pointer flex flex-col h-full"><div class="flex items-start justify-between mb-md"><div class="h-10 w-10 bg-tertiary/10 rounded flex items-center justify-center text-tertiary"><span class="material-symbols-outlined">auto_fix_high</span></div><span class="bg-tertiary/20 text-tertiary px-2 py-1 rounded text-[10px] font-label-caps">AI POWERED</span></div><h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">Remove Background</h4><p class="text-on-surface-variant text-body-sm flex-grow">AI automated background removal and transparent PNG export.</p><div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors"><span class="text-label-caps font-label-caps">Launch Tool</span><span class="material-symbols-outlined text-sm">arrow_forward</span></div></div><div class="glass-panel tool-card p-lg rounded-xl transition-all duration-300 group cursor-pointer flex flex-col h-full"><div class="flex items-start justify-between mb-md"><div class="h-10 w-10 bg-secondary/10 rounded flex items-center justify-center text-secondary"><span class="material-symbols-outlined">verified_user</span></div><span class="bg-secondary/20 text-secondary px-2 py-0.5 rounded text-[10px] font-label-caps">SECURITY</span></div><h4 class="font-body-lg text-body-lg text-on-surface font-semibold mb-sm">SSL Checker</h4><p class="text-on-surface-variant text-body-sm flex-grow">SSL/TLS certificate validity, expiration alert, and cipher strength audit.</p><div class="mt-md pt-md border-t border-white/5 flex items-center justify-between group-hover:text-primary transition-colors"><span class="text-label-caps font-label-caps">Launch Tool</span><span class="material-symbols-outlined text-sm">arrow_forward</span></div></div></div></section>
+</div>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant px-margin-desktop py-xl">
+  <!-- Top Section: Brand -->
+  <div class="mb-xl">
+    <h2 class="font-headline-md text-headline-md text-primary font-bold">InzaTech</h2>
+    <p class="text-on-surface-variant text-body-sm opacity-80">The All-in-One AI Utility Platform</p>
+  </div>
+
+  <!-- Grid Section (6 columns) -->
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-xl mb-xl">
+    <!-- Products -->
+    <div>
+      <h5 class="text-on-surface font-bold mb-md text-label-caps">Products</h5>
+      <ul class="space-y-sm text-on-surface-variant text-body-sm">
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Explore Apps</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">AI Apps</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Widgets</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Portals</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">InzaTech Mobile</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Inzaghi's Sites (Old)</a></li>
+      </ul>
+    </div>
+    <!-- Tools -->
+    <div>
+      <h5 class="text-on-surface font-bold mb-md text-label-caps">Tools</h5>
+      <ul class="space-y-sm text-on-surface-variant text-body-sm">
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Calculators</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Converters</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Formatters</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Generators</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">File Converter</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Utilities</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Tester Tools</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Developer Tools</a></li>
+        <li class=""><a href="#" class="text-primary font-bold hover:underline">All Tools →</a></li>
+      </ul>
+    </div>
+    <!-- AI Apps -->
+    <div>
+      <h5 class="text-on-surface font-bold mb-md text-label-caps">AI Apps</h5>
+      <ul class="space-y-sm text-on-surface-variant text-body-sm">
+        <li class=""><a href="#" class="hover:text-primary transition-colors">AI Chatbot</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">AI Writer</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">AI Code Generator</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">AI Image Generator</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">AI Prompt Library</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">AI Translator</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">AI OCR</a></li>
+        <li class=""><a href="#" class="text-primary font-bold hover:underline">All AI Apps →</a></li>
+      </ul>
+    </div>
+    <!-- Portals -->
+    <div>
+      <h5 class="text-on-surface font-bold mb-md text-label-caps">Portals</h5>
+      <ul class="space-y-sm text-on-surface-variant text-body-sm">
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Technology Tutorials</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Learning Portal</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">IT Project Lists</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Language Portal</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Career Portal</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Muslims Portal</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Documentation</a></li>
+        <li class=""><a href="#" class="text-primary font-bold hover:underline">All Portals →</a></li>
+      </ul>
+    </div>
+    <!-- Company -->
+    <div>
+      <h5 class="text-on-surface font-bold mb-md text-label-caps">Company</h5>
+      <ul class="space-y-sm text-on-surface-variant text-body-sm">
+        <li class=""><a href="#" class="hover:text-primary transition-colors">About</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Services</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Contact</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Sitemap</a></li>
+      </ul>
+    </div>
+    <!-- Legal -->
+    <div>
+      <h5 class="text-on-surface font-bold mb-md text-label-caps">Legal</h5>
+      <ul class="space-y-sm text-on-surface-variant text-body-sm">
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Terms of Service</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Disclaimer</a></li>
+        <li class=""><a href="#" class="hover:text-primary transition-colors">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Social Media Section -->
+  <div class="py-md border-t border-white/5 flex flex-col md:flex-row items-center gap-md">
+    <span class="text-on-surface font-bold text-body-sm">Social Media (Inzaghi's Media):</span>
+    <div class="flex gap-md">
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">terminal</span></a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">public</span></a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">video_library</span></a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">alternate_email</span></a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">photo_camera</span></a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">movie</span></a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">token</span></a>
+    </div>
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="pt-xl border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-md text-body-sm text-on-surface-variant opacity-60">
+    <p class="">© 2026 InzaTech. All rights reserved.</p>
+    <p class="flex items-center gap-xs">Powered by Next.js • React • Tailwind CSS • Notion API • Blogger API</p>
+    <p class="flex items-center gap-xs">Made with <span class="text-error">❤️</span> in Indonesia</p>
+  </div>
+</footer>
+</main>
+<!-- Floating AI Prompt -->
+<div class="fixed bottom-lg right-lg z-50">
+<button class="h-14 w-14 rounded-full bg-primary-container text-on-primary-container shadow-2xl flex items-center justify-center active:scale-90 transition-all group overflow-hidden">
+<span class="material-symbols-outlined text-2xl group-hover:hidden">magic_button</span>
+<span class="hidden group-hover:block px-md font-bold text-sm whitespace-nowrap">Ask AI</span>
+</button>
+</div>
+<script>
+    const cards = document.querySelectorAll('.tool-card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            const icon = card.querySelector('.material-symbols-outlined');
+            if(icon) icon.style.transform = 'scale(1.1) rotate(5deg)';
+        });
+        card.addEventListener('mouseleave', () => {
+            const icon = card.querySelector('.material-symbols-outlined');
+            if(icon) icon.style.transform = 'scale(1) rotate(0deg)';
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

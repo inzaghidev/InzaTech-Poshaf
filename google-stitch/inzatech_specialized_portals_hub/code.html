@@ -1,0 +1,629 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>InzaTech | Portals Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .glass-panel {
+            background: rgba(19, 27, 46, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ai-pulse {
+            box-shadow: 0 0 0 0 rgba(78, 222, 163, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(78, 222, 163, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(78, 222, 163, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(78, 222, 163, 0); }
+        }
+        .code-container {
+            background-color: #000000;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b1326;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3449;
+            border-radius: 10px;
+        }
+        .nav-active-indicator {
+            position: relative;
+            color: #dae2fd !important;
+        }
+        .nav-active-indicator::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #dae2fd;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#67f4b7",
+                    "surface-container-low": "#131b2e",
+                    "on-surface-variant": "#c7c4d8",
+                    "error-container": "#93000a",
+                    "on-secondary": "#003640",
+                    "secondary-container": "#03b5d3",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "primary-fixed": "#e2dfff",
+                    "on-secondary-container": "#00424e",
+                    "surface-container-high": "#222a3d",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-tertiary-fixed": "#002113",
+                    "surface-container": "#171f33",
+                    "primary-container": "#4f46e5",
+                    "secondary": "#4cd7f6",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-background": "#dae2fd",
+                    "on-tertiary": "#003824",
+                    "inverse-surface": "#dae2fd",
+                    "primary": "#c3c0ff",
+                    "on-secondary-fixed": "#001f26",
+                    "outline": "#918fa1",
+                    "on-primary-fixed": "#0f0069",
+                    "surface-bright": "#31394d",
+                    "on-primary": "#1d00a5",
+                    "on-primary-container": "#dad7ff",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#283044",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "surface-variant": "#2d3449",
+                    "tertiary-container": "#006e4b",
+                    "outline-variant": "#464555",
+                    "surface-tint": "#c3c0ff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "surface": "#0b1326",
+                    "inverse-primary": "#4d44e3",
+                    "tertiary": "#4edea3",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-surface": "#dae2fd",
+                    "surface-dim": "#0b1326",
+                    "surface-container-lowest": "#060e20",
+                    "background": "#0b1326",
+                    "error": "#ffb4ab",
+                    "surface-container-highest": "#2d3449",
+                    "on-error-container": "#ffdad6",
+                    "secondary-fixed": "#acedff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "xl": "32px",
+                    "margin-desktop": "40px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Geist"],
+                    "headline-lg-mobile": ["Geist"],
+                    "label-caps": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Geist"],
+                    "code-block": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "code-block": ["14px", {"lineHeight": "22px", "fontWeight": "450"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TOP NAVIGATION -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-md max-w-[1440px] mx-auto h-16">
+<div class="flex items-center gap-xl">
+<span class="font-headline-md text-headline-md font-bold text-primary">InzaTech</span>
+<nav class="hidden lg:flex items-center gap-lg">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Widgets</a>
+<!-- Portals (ACTIVE) -->
+<div class="relative group">
+<button class="flex items-center gap-xs nav-active-indicator font-medium hover:text-primary transition-colors duration-200">
+                        Portals <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-2 w-64 bg-surface-container-high border border-white/10 rounded-xl shadow-2xl p-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+<div class="grid gap-sm">
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Technology Tutorials</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Learning Portal</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">IT Project Lists</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Language Portal</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Career Portal</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Muslims Portal</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-xs text-on-surface-variant font-medium hover:text-primary transition-colors duration-200">
+                        Explore <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-2 w-56 bg-surface-container-high border border-white/10 rounded-xl shadow-2xl p-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+<div class="grid gap-sm">
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Converters</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Calculators</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Generators</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Formatters</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">File Converter</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Utilities</a>
+<hr class="border-white/5 my-xs">
+<a class="text-body-sm text-secondary font-bold" href="#">Browse all Apps →</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-xs text-on-surface-variant font-medium hover:text-primary transition-colors duration-200">
+                        AI Apps <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-2 w-64 bg-surface-container-high border border-white/10 rounded-xl shadow-2xl p-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+<div class="grid gap-sm">
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">AI Chatbot</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">AI Writer</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">AI Code Generator</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">AI Image Generator</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">AI Prompt Library</a>
+<hr class="border-white/5 my-xs">
+<a class="text-body-sm text-secondary font-bold" href="#">Browse all AI Apps →</a>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="flex items-center gap-xs text-on-surface-variant font-medium hover:text-primary transition-colors duration-200">
+                        Blog Media <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+<div class="absolute top-full left-0 mt-2 w-48 bg-surface-container-high border border-white/10 rounded-xl shadow-2xl p-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+<div class="grid gap-sm">
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Inzaghi's Blog</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary" href="#">Inzaghi's Media</a>
+</div>
+</div>
+</div>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Services</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">search</button>
+<div class="relative group">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">contrast</button>
+<div class="absolute top-full right-0 mt-xs w-32 bg-surface-container-high border border-white/10 rounded-lg shadow-xl p-xs opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+<div class="grid gap-xs">
+<button class="text-left px-sm py-1 text-body-sm text-on-surface-variant hover:bg-surface-variant rounded">Dark</button>
+<button class="text-left px-sm py-1 text-body-sm text-on-surface-variant hover:bg-surface-variant rounded">Light</button>
+<button class="text-left px-sm py-1 text-body-sm text-on-surface-variant hover:bg-surface-variant rounded">System</button>
+</div>
+</div>
+</div>
+<button class="px-md py-sm bg-primary-container text-on-primary-container rounded-lg font-bold text-label-caps hover:translate-y-[-2px] transition-all">Get Started</button>
+</div>
+</div>
+</header>
+<div class="flex pt-16 min-h-screen">
+<!-- SIDE NAVIGATION -->
+<aside class="hidden md:flex flex-col h-[calc(100vh-64px)] w-64 fixed left-0 top-16 bg-surface-container/80 backdrop-blur-lg border-r border-white/5 shadow-lg p-md z-40 overflow-y-auto">
+<div class="mb-lg">
+<div class="flex items-center gap-sm mb-md">
+<div class="p-xs bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">hub</span>
+</div>
+<div>
+<p class="font-headline-md text-[16px] font-extrabold text-on-surface leading-tight">Portals Hub</p>
+<p class="font-label-caps text-[10px] text-on-surface-variant">Central Directory</p>
+</div>
+</div>
+<button class="w-full py-sm px-md bg-primary-container text-on-primary-container rounded-lg font-bold text-label-caps flex items-center justify-center gap-xs active:scale-98 transition-transform">
+<span class="material-symbols-outlined">explore</span> Explore Hub
+                </button>
+</div>
+<div class="space-y-sm flex-1">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg hover:translate-x-1 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Overview</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container rounded-lg font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-label-caps text-label-caps">All Portals</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg hover:translate-x-1 transition-all" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-caps text-label-caps">Tutorials</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg hover:translate-x-1 transition-all" href="#">
+<span class="material-symbols-outlined">code_blocks</span>
+<span class="font-label-caps text-label-caps">Projects</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg hover:translate-x-1 transition-all" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-caps text-label-caps">Careers</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant/50 rounded-lg hover:translate-x-1 transition-all" href="#">
+<span class="material-symbols-outlined">mosque</span>
+<span class="font-label-caps text-label-caps">Muslims</span>
+</a>
+</div>
+<div class="mt-auto border-t border-outline-variant pt-md space-y-sm">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-caps text-label-caps">Support</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-caps text-label-caps">Account</span>
+</a>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="flex-1 md:ml-64 p-gutter lg:p-margin-desktop bg-background">
+<div class="max-w-6xl mx-auto space-y-xl">
+<!-- HERO SECTION -->
+<section class="relative overflow-hidden rounded-xl p-xl glass-panel border-l-4 border-l-primary">
+<div class="relative z-10 max-w-2xl">
+<span class="inline-flex items-center gap-xs px-sm py-1 bg-primary-container/20 text-primary text-label-caps rounded-full mb-md">
+<span class="w-2 h-2 rounded-full bg-primary ai-pulse"></span>
+                            Unified Access Hub
+                        </span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-sm">InzaTech Portals</h1>
+<p class="text-body-lg text-on-surface-variant mb-lg">Your centralized gateway to specialized learning, career opportunities, and technical excellence. Explore our ecosystem of modular tools and materials.</p>
+<div class="flex flex-wrap gap-md">
+<button class="px-lg py-md bg-primary-container text-on-primary-container rounded-lg font-bold shadow-[0_0_15px_rgba(79,70,229,0.4)] hover:translate-y-[-2px] transition-all">Quick Start Guide</button>
+<button class="px-lg py-md border border-outline-variant text-on-surface-variant rounded-lg font-medium hover:bg-white/5 transition-all">Browse Directory</button>
+</div>
+</div>
+</section>
+<!-- PORTALS GRID -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- LEFT COLUMN: MAIN PORTALS -->
+<div class="lg:col-span-8 space-y-xl">
+<!-- SECTION 1: TECHNOLOGY TUTORIALS -->
+<section class="space-y-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">Technology Tutorials</h2>
+<span class="material-symbols-outlined text-primary">terminal</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-md">
+<div class="glass-panel p-md rounded-xl hover:bg-surface-variant/30 transition-all cursor-pointer group">
+<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">memory</span>
+</div>
+<h3 class="text-body-md font-bold mb-1">Computer Sciences</h3>
+<p class="text-[12px] text-on-surface-variant">OS, Algorithms, Architecture</p>
+</div>
+<div class="glass-panel p-md rounded-xl hover:bg-surface-variant/30 transition-all cursor-pointer group">
+<div class="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary">code</span>
+</div>
+<h3 class="text-body-md font-bold mb-1">Programming</h3>
+<p class="text-[12px] text-on-surface-variant">Rust, Go, Python, TS</p>
+</div>
+<div class="glass-panel p-md rounded-xl hover:bg-surface-variant/30 transition-all cursor-pointer group">
+<div class="w-10 h-10 bg-tertiary/10 rounded-lg flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary">language</span>
+</div>
+<h3 class="text-body-md font-bold mb-1">Web Developments</h3>
+<p class="text-[12px] text-on-surface-variant">Frontend, Backend, APIs</p>
+</div>
+<div class="glass-panel p-md rounded-xl hover:bg-surface-variant/30 transition-all cursor-pointer group">
+<div class="w-10 h-10 bg-orange-500/10 rounded-lg flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-orange-500">smartphone</span>
+</div>
+<h3 class="text-body-md font-bold mb-1">Mobile</h3>
+<p class="text-[12px] text-on-surface-variant">Flutter, React Native, Swift</p>
+</div>
+<div class="glass-panel p-md rounded-xl hover:bg-surface-variant/30 transition-all cursor-pointer group">
+<div class="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-cyan-500">database</span>
+</div>
+<h3 class="text-body-md font-bold mb-1">Databases</h3>
+<p class="text-[12px] text-on-surface-variant">SQL, NoSQL, Vector DBs</p>
+</div>
+<div class="glass-panel p-md rounded-xl hover:bg-surface-variant/30 transition-all border border-dashed border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-primary cursor-pointer">
+<span class="text-label-caps">View All Tutorials</span>
+</div>
+</div>
+</section>
+<!-- SECTION 2: LEARNING PORTAL -->
+<section class="space-y-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">Learning Portal</h2>
+<span class="material-symbols-outlined text-secondary">school</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="glass-panel p-lg rounded-xl relative overflow-hidden group">
+<div class="absolute -right-8 -bottom-8 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[120px]">school</span>
+</div>
+<h3 class="text-headline-md text-[20px] mb-md text-secondary">IT Lecture Materials</h3>
+<p class="text-body-sm text-on-surface-variant mb-lg max-w-[80%]">Comprehensive university-level modules on Network Security, Distributed Systems, and Advanced UI/UX.</p>
+<button class="flex items-center gap-xs text-secondary font-label-caps text-[12px] hover:translate-x-1 transition-transform">ACCESS LIBRARY <span class="material-symbols-outlined text-[16px]">arrow_forward</span></button>
+</div>
+<div class="glass-panel p-lg rounded-xl relative overflow-hidden group">
+<div class="absolute -right-8 -bottom-8 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[120px]">history_edu</span>
+</div>
+<h3 class="text-headline-md text-[20px] mb-md text-tertiary">High School Materials</h3>
+<p class="text-body-sm text-on-surface-variant mb-lg max-w-[80%]">Curated foundation courses for aspiring developers, covering Mathematics, Basic Logic, and Intro to IT.</p>
+<button class="flex items-center gap-xs text-tertiary font-label-caps text-[12px] hover:translate-x-1 transition-transform">BROWSE SUBJECTS <span class="material-symbols-outlined text-[16px]">arrow_forward</span></button>
+</div>
+</div>
+</section>
+<!-- SECTION 3: IT PROJECT LISTS -->
+<section class="space-y-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">IT Project Lists</h2>
+<span class="material-symbols-outlined text-tertiary">lab_profile</span>
+</div>
+<div class="space-y-sm">
+<!-- Project Entry 1 -->
+<div class="flex items-center gap-md glass-panel p-md rounded-lg group">
+<div class="w-12 h-12 bg-surface-container rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">code</span>
+</div>
+<div class="flex-1">
+<h4 class="font-body-lg font-bold">Programming &amp; Web Projects</h4>
+<p class="text-body-sm text-on-surface-variant">50+ Open source repositories for practice.</p>
+</div>
+<button class="px-md py-sm bg-surface-container-high hover:bg-surface-variant rounded text-label-caps text-[10px]">View List</button>
+</div>
+<!-- Project Entry 2 -->
+<div class="flex items-center gap-md glass-panel p-md rounded-lg group">
+<div class="w-12 h-12 bg-surface-container rounded flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-all">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<div class="flex-1">
+<h4 class="font-body-lg font-bold">Mobile &amp; UI/UX Projects</h4>
+<p class="text-body-sm text-on-surface-variant">App prototypes and design systems templates.</p>
+</div>
+<button class="px-md py-sm bg-surface-container-high hover:bg-surface-variant rounded text-label-caps text-[10px]">View List</button>
+</div>
+<!-- Project Entry 3 -->
+<div class="flex items-center gap-md glass-panel p-md rounded-lg group">
+<div class="w-12 h-12 bg-surface-container rounded flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-all">
+<span class="material-symbols-outlined">settings_input_component</span>
+</div>
+<div class="flex-1">
+<h4 class="font-body-lg font-bold">IoT &amp; Engineering</h4>
+<p class="text-body-sm text-on-surface-variant">Hardware-software integration projects.</p>
+</div>
+<button class="px-md py-sm bg-surface-container-high hover:bg-surface-variant rounded text-label-caps text-[10px]">View List</button>
+</div>
+<!-- Project Entry 4 -->
+<div class="flex items-center gap-md glass-panel p-md rounded-lg group">
+<div class="w-12 h-12 bg-surface-container rounded flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div class="flex-1">
+<h4 class="font-body-lg font-bold">AI Projects</h4>
+<p class="text-body-sm text-on-surface-variant">LLM, Computer Vision, and Predictive Modeling.</p>
+</div>
+<button class="px-md py-sm bg-surface-container-high hover:bg-surface-variant rounded text-label-caps text-[10px]">View List</button>
+</div>
+</div>
+</section>
+</div>
+<!-- RIGHT COLUMN: MINI PORTALS GRID -->
+<div class="lg:col-span-4 space-y-lg">
+<h2 class="font-headline-md text-[20px] text-on-surface lg:hidden">Specialized Portals</h2>
+<!-- Language Portal -->
+<div class="glass-panel p-md rounded-xl border-t-2 border-t-primary">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-headline-md text-[18px]">Language Portal</h3>
+<span class="material-symbols-outlined text-primary text-sm">translate</span>
+</div>
+<div class="grid grid-cols-2 gap-sm mb-lg"><div class="p-sm bg-surface-container rounded flex items-center gap-sm hover:bg-surface-variant transition-colors cursor-pointer border border-white/5"><div class="w-8 h-8 flex items-center justify-center bg-orange-500/20 text-orange-500 rounded text-[10px] font-bold">JA</div><div class="overflow-hidden"><span class="text-[12px] font-medium block truncate">日本語</span><span class="text-[10px] text-on-surface-variant block truncate">Japanese</span></div></div><div class="p-sm bg-surface-container rounded flex items-center gap-sm hover:bg-surface-variant transition-colors cursor-pointer border border-white/5"><div class="w-8 h-8 flex items-center justify-center bg-blue-500/20 text-blue-500 rounded text-[10px] font-bold">DE</div><div class="overflow-hidden"><span class="text-[12px] font-medium block truncate">Deutsch</span><span class="text-[10px] text-on-surface-variant block truncate">German</span></div></div><div class="p-sm bg-surface-container rounded flex items-center gap-sm hover:bg-surface-variant transition-colors cursor-pointer border border-white/5"><div class="w-8 h-8 flex items-center justify-center bg-tertiary/20 text-tertiary rounded text-[10px] font-bold">ES</div><div class="overflow-hidden"><span class="text-[12px] font-medium block truncate">Español</span><span class="text-[10px] text-on-surface-variant block truncate">Spanish</span></div></div><div class="p-sm bg-surface-container rounded flex items-center gap-sm hover:bg-surface-variant transition-colors cursor-pointer border border-white/5"><div class="w-8 h-8 flex items-center justify-center bg-secondary/20 text-secondary rounded text-[10px] font-bold">AR</div><div class="overflow-hidden"><span class="text-[12px] font-medium block truncate">العربية</span><span class="text-[10px] text-on-surface-variant block truncate">Arabic</span></div></div><div class="p-sm bg-surface-container rounded flex items-center gap-sm hover:bg-surface-variant transition-colors cursor-pointer border border-white/5 col-span-2"><div class="w-8 h-8 flex items-center justify-center bg-primary/20 text-primary rounded text-[10px] font-bold">FR</div><div class="overflow-hidden"><span class="text-[12px] font-medium block truncate">Français</span><span class="text-[10px] text-on-surface-variant block truncate">French</span></div></div></div>
+<button class="w-full py-sm text-on-surface-variant text-[12px] hover:text-primary transition-colors flex items-center justify-center gap-xs group">
+                        Explore Languages <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Career Portal -->
+<div class="glass-panel p-md rounded-xl border-t-2 border-t-secondary">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-headline-md text-[18px]">Career Portal</h3>
+<span class="material-symbols-outlined text-secondary text-sm">work</span>
+</div>
+<div class="p-sm bg-surface-container-high/50 rounded-lg mb-md">
+<p class="text-body-sm font-bold text-on-surface">ML Ops Engineer</p>
+<p class="text-[12px] text-secondary">94% Match</p>
+</div>
+<button class="w-full py-sm text-on-surface-variant text-[12px] hover:text-secondary transition-colors flex items-center justify-center gap-xs group">
+                        Job Board <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- Muslims Portal -->
+<div class="glass-panel p-md rounded-xl border-t-2 border-t-tertiary">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-headline-md text-[18px]">Muslims Portal</h3>
+<span class="material-symbols-outlined text-tertiary text-sm">mosque</span>
+</div>
+<div class="p-sm bg-surface-container-high/50 rounded-lg mb-md flex items-center gap-md">
+<div class="w-10 h-10 bg-tertiary/10 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">menu_book</span>
+</div>
+<div>
+<p class="text-[12px] font-bold text-on-surface">Daily Quran Reading</p>
+<p class="text-[10px] text-on-surface-variant">Surah Al-Kahf</p>
+</div>
+</div>
+<button class="w-full py-sm text-on-surface-variant text-[12px] hover:text-tertiary transition-colors flex items-center justify-center gap-xs group">
+                        Enter Portal <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- COMMUNITY CARD -->
+<div class="glass-panel p-md rounded-xl text-center space-y-md">
+<div class="flex -space-x-3 justify-center">
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Small circle avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoBP4neK8EWho6_kQSXWNJl7FD-jY2bT5DJ127GeNzkTISPvebF3L-VgRI8wyXRw_SrO_EybtUiHnRFCKs17Ck6T1diFw142M4_2NipK07FvjGShLOo95HlpODDBRreo0ZNVEiMJN2-rRMa0EohZfF_1qiBw7-aqkA9VVKOKopopSgW92y3pEC0_pINDKetW3_uFphZyCxjo3lg18wwhqXLAco9v9VIEPb8HnYP2MjGl_6no-QZOTZPWtdiWKo6n5xzhnWL-zLnKg">
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Small circle avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm_Db62fEELSvQM5jvhqSRdWetJPsOLE75pjNEwyP6vU-Uv-rFDbO-YSlmltRxZjPazw9KmfZXMfGEYN4vxjqwdOQLv-Gh7CNIyJUPVCHxlyGToMmZzin3Kphqnv4mpTloWWCSGWVG6EgdpVVRz4av6pON7vF0CeV9HZtqsPF1nRjs67lx1oKE-APm4G-d8EdltRAmor3aEqGLMGKt_Xoatk72G3DFpZw3sGvR75P-xoUFeMZD-seasuoTN-NLLfYdy1k67Xqs8lA">
+</div>
+<p class="text-body-sm text-on-surface-variant">420+ members active across all portals</p>
+<button class="px-md py-xs border border-primary/40 text-primary text-label-caps rounded-full hover:bg-primary/10 transition-colors">Join Community</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- FOOTER -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant mt-xl"><div class="max-w-7xl mx-auto px-margin-desktop py-xl">
+  <!-- Top Section -->
+  <div class="mb-xl">
+    <span class="font-headline-md text-headline-md text-primary block">InzaTech</span>
+    <p class="text-on-surface-variant font-body-sm">The All-in-One AI Utility Platform</p>
+  </div>
+
+  <!-- Grid Section -->
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-lg mb-xl">
+    <!-- Products -->
+    <div>
+      <h4 class="font-label-caps text-primary mb-md">Products</h4>
+      <ul class="space-y-sm text-body-sm text-on-surface-variant">
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Explore Apps</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">AI Apps</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Widgets</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Portals</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Blog</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">InzaTech Mobile</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Inzaghi's Sites (Old)</a></li>
+      </ul>
+    </div>
+    <!-- Tools -->
+    <div>
+      <h4 class="font-label-caps text-primary mb-md">Tools</h4>
+      <ul class="space-y-sm text-body-sm text-on-surface-variant">
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Calculators</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Converters</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Formatters</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Generators</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">File Converter</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Utilities</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Tester Tools</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Developer Tools</a></li>
+        <li class=""><a class="text-secondary font-bold" href="#">All Tools →</a></li>
+      </ul>
+    </div>
+    <!-- AI Apps -->
+    <div>
+      <h4 class="font-label-caps text-primary mb-md">AI Apps</h4>
+      <ul class="space-y-sm text-body-sm text-on-surface-variant">
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">AI Chatbot</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">AI Writer</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">AI Code Generator</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">AI Image Generator</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">AI Prompt Library</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">AI Translator</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">AI OCR</a></li>
+        <li class=""><a class="text-secondary font-bold" href="#">All AI Apps →</a></li>
+      </ul>
+    </div>
+    <!-- Portals -->
+    <div>
+      <h4 class="font-label-caps text-primary mb-md">Portals</h4>
+      <ul class="space-y-sm text-body-sm text-on-surface-variant">
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Technology Tutorials</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Learning Portal</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">IT Project Lists</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Language Portal</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Career Portal</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Muslims Portal</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Documentation</a></li>
+        <li class=""><a class="text-secondary font-bold" href="#">All Portals →</a></li>
+      </ul>
+    </div>
+    <!-- Company -->
+    <div>
+      <h4 class="font-label-caps text-primary mb-md">Company</h4>
+      <ul class="space-y-sm text-body-sm text-on-surface-variant">
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">About</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Services</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Contact</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Sitemap</a></li>
+      </ul>
+    </div>
+    <!-- Legal -->
+    <div>
+      <h4 class="font-label-caps text-primary mb-md">Legal</h4>
+      <ul class="space-y-sm text-body-sm text-on-surface-variant">
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Terms of Service</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Disclaimer</a></li>
+        <li class=""><a class="hover:text-secondary transition-colors" href="#">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Social Media Section -->
+  <div class="border-t border-white/5 py-lg flex flex-wrap items-center gap-md">
+    <span class="text-label-caps text-on-surface-variant">Social Media (Inzaghi's Media):</span>
+    <div class="flex flex-wrap gap-md">
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors">GitHub</a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors">LinkedIn</a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors">YouTube</a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Threads</a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Instagram</a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors">TikTok</a>
+      <a href="#" class="text-on-surface-variant hover:text-primary transition-colors">X/Twitter</a>
+    </div>
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="border-t border-white/5 pt-lg flex flex-col md:flex-row justify-between items-center gap-md text-[12px] text-on-surface-variant">
+    <p class="">© 2026 InzaTech. All rights reserved.</p>
+    <p class="text-center">Powered by Next.js • React • Tailwind CSS • Notion API • Blogger API</p>
+    <p class="">Made with ❤️ in Indonesia</p>
+  </div>
+</div></footer>
+<!-- FAB -->
+<button class="fixed bottom-lg right-lg w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+</button>
+<script>
+        // Micro-interactions and interactive states
+        document.querySelectorAll('.active\\:scale-95').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.95)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

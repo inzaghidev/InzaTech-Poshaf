@@ -1,0 +1,561 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AI Apps Portal | InzaTech</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@450;600&amp;family=Geist:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-low": "#131b2e",
+                "secondary-container": "#03b5d3",
+                "surface-dim": "#0b1326",
+                "on-tertiary-container": "#67f4b7",
+                "surface-container-highest": "#2d3449",
+                "surface": "#0b1326",
+                "on-primary": "#1d00a5",
+                "surface-container": "#171f33",
+                "outline": "#918fa1",
+                "on-error": "#690005",
+                "primary-container": "#4f46e5",
+                "background": "#0b1326",
+                "on-secondary-container": "#00424e",
+                "outline-variant": "#464555",
+                "on-surface-variant": "#c7c4d8",
+                "tertiary-fixed-dim": "#4edea3",
+                "on-background": "#dae2fd",
+                "on-secondary-fixed": "#001f26",
+                "on-surface": "#dae2fd",
+                "error-container": "#93000a",
+                "surface-bright": "#31394d",
+                "tertiary-fixed": "#6ffbbe",
+                "secondary-fixed-dim": "#4cd7f6",
+                "surface-variant": "#2d3449",
+                "surface-container-high": "#222a3d",
+                "inverse-surface": "#dae2fd",
+                "on-tertiary": "#003824",
+                "on-secondary": "#003640",
+                "error": "#ffb4ab",
+                "on-primary-fixed": "#0f0069",
+                "inverse-primary": "#4d44e3",
+                "primary-fixed-dim": "#c3c0ff",
+                "primary-fixed": "#e2dfff",
+                "secondary": "#4cd7f6",
+                "tertiary-container": "#006e4b",
+                "on-tertiary-fixed": "#002113",
+                "on-error-container": "#ffdad6",
+                "on-tertiary-fixed-variant": "#005236",
+                "surface-tint": "#c3c0ff",
+                "surface-container-lowest": "#060e20",
+                "tertiary": "#4edea3",
+                "secondary-fixed": "#acedff",
+                "on-secondary-fixed-variant": "#004e5c",
+                "on-primary-fixed-variant": "#3323cc",
+                "inverse-on-surface": "#283044",
+                "primary": "#c3c0ff",
+                "on-primary-container": "#dad7ff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "lg": "24px",
+                "base": "4px",
+                "xl": "32px",
+                "xs": "4px",
+                "margin-mobile": "16px",
+                "margin-desktop": "40px",
+                "md": "16px",
+                "gutter": "16px",
+                "sm": "8px"
+            },
+            "fontFamily": {
+                "headline-md": ["Geist"],
+                "code-block": ["JetBrains Mono"],
+                "body-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "headline-lg": ["Geist"],
+                "label-caps": ["JetBrains Mono"],
+                "body-sm": ["Inter"],
+                "headline-lg-mobile": ["Geist"]
+            },
+            "fontSize": {
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "code-block": ["14px", {"lineHeight": "22px", "fontWeight": "450"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .glass-card {
+            background: rgba(23, 31, 51, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(195, 192, 255, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.2);
+        }
+
+        .primary-glow {
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+        }
+
+        .ai-pulse {
+            position: relative;
+        }
+        .ai-pulse::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+            background: #4edea3;
+            border-radius: 50%;
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(78, 222, 163, 0.7); }
+            70% { transform: scale(1.1); opacity: 0.5; box-shadow: 0 0 0 6px rgba(78, 222, 163, 0); }
+            100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(78, 222, 163, 0); }
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b1326; }
+        ::-webkit-scrollbar-thumb { background: #2d3449; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #464555; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-primary/10 flex items-center justify-between px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-xl">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary tracking-tight">InzaTech</span>
+<div class="hidden md:flex items-center gap-lg"><a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="#">Widgets</a>
+<div class="relative group">
+  <button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-all duration-200">
+    Portals <span class="material-symbols-outlined text-[18px]">expand_more</span>
+  </button>
+  <div class="absolute top-full left-0 mt-2 w-56 bg-surface-container-low/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[70]">
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Technology Tutorials</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Learning Portal</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">IT Project Lists</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Language Portal</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Career Portal</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Muslims Portal</a>
+  </div>
+</div>
+<div class="relative group">
+  <button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-all duration-200">
+    Explore <span class="material-symbols-outlined text-[18px]">expand_more</span>
+  </button>
+  <div class="absolute top-full left-0 mt-2 w-56 bg-surface-container-low/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[70]">
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Converters</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Calculators</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Generators</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Formatters</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">File Converter</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Utilities</a>
+    <div class="my-1 border-t border-white/5"></div>
+    <a href="#" class="block px-4 py-2 text-body-sm text-primary font-semibold hover:bg-primary/10">Browse all Apps →</a>
+  </div>
+</div>
+<div class="relative group">
+  <button class="flex items-center gap-1 text-primary font-semibold border-b-2 border-primary py-1">
+    AI Apps <span class="material-symbols-outlined text-[18px]">expand_more</span>
+  </button>
+  <div class="absolute top-full left-0 mt-2 w-64 bg-surface-container-low/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[70]">
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">AI Chatbot</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">AI Writer</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">AI Code Generator</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">AI Image Generator</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">AI Prompt Library</a>
+    <div class="my-1 border-t border-white/5"></div>
+    <a href="#" class="block px-4 py-2 text-body-sm text-primary font-semibold hover:bg-primary/10">Browse all AI Apps →</a>
+  </div>
+</div>
+<div class="relative group">
+  <button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-all duration-200">
+    Blog Media <span class="material-symbols-outlined text-[18px]">expand_more</span>
+  </button>
+  <div class="absolute top-full left-0 mt-2 w-56 bg-surface-container-low/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[70]">
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Inzaghi's Blog</a>
+    <a href="#" class="block px-4 py-2 text-body-sm text-on-surface-variant hover:bg-primary/10 hover:text-primary">Inzaghi's Media</a>
+  </div>
+</div>
+<a class="text-on-surface-variant hover:text-primary transition-all duration-200" href="#">Services</a></div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-highest/30 border border-outline-variant/30 rounded-full px-4 py-1.5 text-body-sm w-64 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Search resources..." type="text">
+<span class="material-symbols-outlined absolute right-3 top-2 text-on-surface-variant text-[18px]">search</span>
+</div>
+<button class="bg-primary-container text-on-primary font-semibold px-5 py-2 rounded-lg hover:translate-y-[-2px] transition-transform active:scale-95 shadow-lg shadow-primary/20">Sign In</button>
+</div>
+</nav>
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-surface-container-low/90 dark:bg-surface-container-low/90 backdrop-blur-md border-r border-white/5 shadow-2xl flex flex-col py-md overflow-y-auto z-40 hidden md:flex">
+<div class="px-6 mb-lg">
+<div class="flex items-center gap-3 mb-base">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px] text-white">memory</span>
+</div>
+<div>
+<h3 class="font-headline-md text-[18px] text-primary">AI Core</h3>
+<p class="font-label-caps text-[10px] text-on-surface-variant">V2.0 Active</p>
+</div>
+</div>
+</div>
+<div class="px-4 mb-md">
+<p class="font-label-caps text-label-caps text-outline px-2 mb-2">AI SUITE</p>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg mx-2 my-1 transition-transform hover:translate-x-1 cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="font-body-sm text-body-sm">AI Chatbot</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-transform hover:translate-x-1 cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+<span class="font-body-sm text-body-sm">AI Writer</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-transform hover:translate-x-1 cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span class="font-body-sm text-body-sm">AI Code Generator</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-transform hover:translate-x-1 cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+<span class="font-body-sm text-body-sm">AI Image Generator</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-transform hover:translate-x-1 cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px]">library_books</span>
+<span class="font-body-sm text-body-sm">AI Prompt Library</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto px-6 py-lg border-t border-white/5">
+<button class="w-full bg-surface-container-highest text-secondary border border-secondary/20 rounded-lg py-2.5 font-label-caps text-label-caps hover:bg-secondary hover:text-on-secondary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                    New Project
+                </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop bg-surface-dim relative overflow-hidden">
+<!-- Background Decoration -->
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+<header class="mb-xl relative z-10">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">AI Apps Portal</h1>
+<p class="text-body-lg text-on-surface-variant max-w-2xl">Access our suite of neural-powered intelligence tools designed to accelerate your engineering and creative workflows.</p>
+</header>
+<!-- Featured Tool Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg relative z-10">
+<!-- Card 1: Chatbot -->
+<div class="glass-card rounded-xl p-lg flex flex-col h-full group">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary ai-pulse">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</div>
+<span class="font-label-caps text-[10px] bg-secondary/10 text-secondary px-2 py-0.5 rounded-full border border-secondary/20">DEPLOYED</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs text-on-surface">AI Chatbot</h3>
+<p class="text-body-sm text-on-surface-variant mb-lg flex-1">Next-gen conversational intelligence for real-time support, planning, and knowledge retrieval.</p>
+<div class="pt-md border-t border-white/5 flex items-center justify-between">
+<span class="text-tertiary font-label-caps text-[10px]">99.8% ACCURACY</span>
+<button class="bg-primary-container/20 hover:bg-primary-container text-primary hover:text-white px-4 py-1.5 rounded-lg text-body-sm font-semibold transition-all flex items-center gap-2">
+                            Launch <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Writer -->
+<div class="glass-card rounded-xl p-lg flex flex-col h-full group" style="--mouse-x: 146.33746337890625px; --mouse-y: 139px;">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-tertiary/10 rounded-xl flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+</div>
+<span class="font-label-caps text-[10px] bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded-full border border-white/10">STABLE</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs text-on-surface">AI Writer</h3>
+<p class="text-body-sm text-on-surface-variant mb-lg flex-1">Advanced content generation and editing. Professional copy, documentation, and technical writing at scale.</p>
+<div class="pt-md border-t border-white/5 flex items-center justify-between">
+<span class="text-on-surface-variant font-label-caps text-[10px]">25+ LANGUAGES</span>
+<button class="bg-primary-container/20 hover:bg-primary-container text-primary hover:text-white px-4 py-1.5 rounded-lg text-body-sm font-semibold transition-all flex items-center gap-2">
+                            Launch <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Code Gen -->
+<div class="glass-card rounded-xl p-lg flex flex-col h-full group lg:col-span-1 md:col-span-2 lg:md:col-span-1">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary ai-pulse">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<span class="font-label-caps text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded-full border border-primary/30">PREMIUM</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs text-on-surface">AI Code Generator</h3>
+<p class="text-body-sm text-on-surface-variant mb-lg flex-1">Autonomous engineering and debugging. Refactor, document, and generate boilerplate for any tech stack.</p>
+<div class="pt-md border-t border-white/5 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-[#3178c6] border border-surface flex items-center justify-center text-[10px] font-bold">TS</div>
+<div class="w-6 h-6 rounded-full bg-[#f7df1e] border border-surface flex items-center justify-center text-[10px] font-bold text-black">JS</div>
+<div class="w-6 h-6 rounded-full bg-[#3776ab] border border-surface flex items-center justify-center text-[10px] font-bold">PY</div>
+</div>
+<button class="bg-primary-container/20 hover:bg-primary-container text-primary hover:text-white px-4 py-1.5 rounded-lg text-body-sm font-semibold transition-all flex items-center gap-2">
+                            Launch <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 4: Image Gen -->
+<div class="glass-card rounded-xl p-lg flex flex-col h-full group lg:col-span-2" style="--mouse-x: 407px; --mouse-y: 289.5999755859375px;">
+<div class="flex flex-col md:flex-row gap-lg">
+<div class="flex-1">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-primary-container/20 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs text-on-surface">AI Image Generator</h3>
+<p class="text-body-sm text-on-surface-variant mb-lg">Creative neural rendering and synthesis. Generate ultra-realistic assets, UI concepts, and marketing visuals from text descriptions.</p>
+<div class="flex flex-wrap gap-2 mb-md">
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-[11px] text-on-surface">4K UHD</span>
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-[11px] text-on-surface">Stable Diffusion XL</span>
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-[11px] text-on-surface">Real-time Preview</span>
+</div>
+<button class="bg-primary-container text-on-primary px-6 py-2 rounded-lg text-body-sm font-bold transition-all primary-glow hover:scale-105 active:scale-95">Launch Engine</button>
+</div>
+<div class="md:w-1/3 aspect-square rounded-xl overflow-hidden border border-white/10 group-hover:border-primary/50 transition-colors">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-110 group-hover:scale-100" data-alt="A futuristic neural network visualization with flowing blue and indigo energy lines, hyper-realistic rendering, cinematic lighting, 4k resolution, depicting artificial intelligence creativity in a dark corporate tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0j7SEv4U10sagN2ZD2KXxtOER_-dMEJIB7BEcUoOsGzTvS1nAMLeMr2ICnAApu4zKprMBWoDKeVU8byabevvYHHainbszBGhSvMUO4UE-JPiXPEpmCl6-alNko5vOaKF0Gk267Crl-G22_X6s8raQM3IjDlBLRzBwIqhZxczNyyQ_4NBa4VzKc9Z1oTRI9LTpG5BXlIwtD5zT4oXoAGHcriTf_bRP-x5Dte7H0Y4xgGG3F4xlWwgV">
+</div>
+</div>
+</div>
+<!-- Card 5: Prompt Library -->
+<div class="glass-card rounded-xl p-lg flex flex-col h-full group">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 bg-on-tertiary-container/10 rounded-xl flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">library_books</span>
+</div>
+<span class="font-label-caps text-[10px] text-tertiary-fixed-dim">COMMUNITY</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-xs text-on-surface">AI Prompt Library</h3>
+<p class="text-body-sm text-on-surface-variant mb-lg flex-1">Optimized intelligence blueprints. Curated collection of high-performance prompts for various LLMs and models.</p>
+<div class="pt-md border-t border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+<span class="text-[11px]">10k+ Templates</span>
+</div>
+<button class="bg-primary-container/20 hover:bg-primary-container text-primary hover:text-white px-4 py-1.5 rounded-lg text-body-sm font-semibold transition-all flex items-center gap-2">
+                            Browse <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Analytics Quick View -->
+<section class="mt-xl">
+<div class="glass-card rounded-xl p-lg border-primary/20" style="--mouse-x: 351px; --mouse-y: 154px;">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-headline-md text-[20px] text-on-surface">Global System Status</h3>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-[12px] font-label-caps text-on-surface-variant">Core Engine: Nominal</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-[12px] font-label-caps text-on-surface-variant">Latency: 45ms</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="bg-surface-container-lowest p-md rounded-lg border border-white/5">
+<p class="text-on-surface-variant text-[11px] font-label-caps mb-1">API REQUESTS</p>
+<p class="text-headline-md text-[22px] font-bold text-primary">1.2M</p>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-lg border border-white/5">
+<p class="text-on-surface-variant text-[11px] font-label-caps mb-1">TOKENS PROCESSED</p>
+<p class="text-headline-md text-[22px] font-bold text-tertiary">4.8B</p>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-lg border border-white/5">
+<p class="text-on-surface-variant text-[11px] font-label-caps mb-1">ACTIVE USERS</p>
+<p class="text-headline-md text-[22px] font-bold text-secondary">12.4K</p>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-lg border border-white/5">
+<p class="text-on-surface-variant text-[11px] font-label-caps mb-1">MODELS ONLINE</p>
+<p class="text-headline-md text-[22px] font-bold text-on-surface">18</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-xl mt-auto bg-surface-container-lowest border-t border-outline-variant/20 px-margin-desktop z-50">
+  <div class="max-w-7xl mx-auto">
+    <!-- Top Section -->
+    <div class="flex flex-col md:flex-row justify-between items-start gap-md mb-xl">
+      <div class="flex flex-col gap-xs">
+        <span class="font-headline-md text-headline-md text-primary">InzaTech</span>
+        <p class="text-body-sm text-on-surface-variant">The All-in-One AI Utility Platform</p>
+      </div>
+    </div>
+
+    <!-- Grid Section -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-lg mb-xl">
+      <!-- Products -->
+      <div class="flex flex-col gap-md">
+        <h4 class="font-label-caps text-label-caps text-primary">Products</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Explore Apps</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">AI Apps</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Widgets</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Portals</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Blog</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">InzaTech Mobile</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Inzaghi's Sites (Old)</a>
+        </nav>
+      </div>
+      <!-- Tools -->
+      <div class="flex flex-col gap-md">
+        <h4 class="font-label-caps text-label-caps text-primary">Tools</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Calculators</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Converters</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Formatters</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Generators</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">File Converter</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Utilities</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Tester Tools</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Developer Tools</a>
+          <a href="#" class="text-body-sm text-primary font-semibold">All Tools →</a>
+        </nav>
+      </div>
+      <!-- AI Apps -->
+      <div class="flex flex-col gap-md">
+        <h4 class="font-label-caps text-label-caps text-primary">AI Apps</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">AI Chatbot</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">AI Writer</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">AI Code Generator</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">AI Image Generator</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">AI Prompt Library</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">AI Translator</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">AI OCR</a>
+          <a href="#" class="text-body-sm text-primary font-semibold">All AI Apps →</a>
+        </nav>
+      </div>
+      <!-- Portals -->
+      <div class="flex flex-col gap-md">
+        <h4 class="font-label-caps text-label-caps text-primary">Portals</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Technology Tutorials</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Learning Portal</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">IT Project Lists</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Language Portal</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Career Portal</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Muslims Portal</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Documentation</a>
+          <a href="#" class="text-body-sm text-primary font-semibold">All Portals →</a>
+        </nav>
+      </div>
+      <!-- Company -->
+      <div class="flex flex-col gap-md">
+        <h4 class="font-label-caps text-label-caps text-primary">Company</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">About</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Services</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Contact</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Sitemap</a>
+        </nav>
+      </div>
+      <!-- Legal -->
+      <div class="flex flex-col gap-md">
+        <h4 class="font-label-caps text-label-caps text-primary">Legal</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Privacy Policy</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Terms of Service</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Disclaimer</a>
+          <a href="#" class="text-body-sm text-on-surface-variant hover:text-secondary transition-colors">Cookie Policy</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Social Media Section -->
+    <div class="py-md border-t border-white/5 flex flex-col md:flex-row items-center gap-md mb-xl">
+      <span class="text-body-sm font-semibold text-on-surface">Social Media (Inzaghi's Media):</span>
+      <div class="flex items-center gap-md">
+        <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">terminal</span></a>
+        <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">share</span></a>
+        <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">play_circle</span></a>
+        <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">alternate_email</span></a>
+        <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">photo_camera</span></a>
+        <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">video_library</span></a>
+        <a href="#" class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">close</span></a>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="pt-lg border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-md text-center md:text-left">
+      <div class="flex flex-col gap-1">
+        <p class="text-body-sm text-on-surface-variant">© 2026 InzaTech. All rights reserved.</p>
+        <p class="text-[12px] text-outline">Powered by Next.js • React • Tailwind CSS • Notion API • Blogger API</p>
+      </div>
+      <div class="flex items-center gap-2 text-body-sm text-on-surface-variant">
+        <span class="">Made with ❤️ in Indonesia</span>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Mobile Nav Anchor (Bottom) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-xl border-t border-white/10 flex items-center justify-around py-3 px-margin-mobile z-[60]">
+<span class="material-symbols-outlined text-primary">home</span>
+<span class="material-symbols-outlined text-on-surface-variant">explore</span>
+<div class="w-12 h-12 bg-primary rounded-full -mt-8 shadow-lg shadow-primary/40 flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">auto_awesome</span>
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

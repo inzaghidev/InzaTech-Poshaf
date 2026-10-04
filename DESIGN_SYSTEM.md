@@ -152,6 +152,10 @@ Use a modern readable sans-serif family. Establish a consistent hierarchy:
 
 Avoid arbitrary page-specific font sizes and oversized headings that consume most of the viewport.
 
+Primary font: **Inter** — the signature typeface of Inzaghi's Sites, Inzaghi's Blog,
+and Inzaghi's Media. InzaTech Web must use Inter for UI and body text, and the
+same font family must be used across Light and Dark themes.
+
 ------------------------------------------------------------------------
 
 ## 7. Spacing

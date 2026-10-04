@@ -1,0 +1,511 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>InzaTech | Empowering Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@600;700&amp;family=JetBrains+Mono:wght@450;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-container": "#67f4b7",
+                "surface-container-low": "#131b2e",
+                "on-surface-variant": "#c7c4d8",
+                "error-container": "#93000a",
+                "on-secondary": "#003640",
+                "secondary-container": "#03b5d3",
+                "secondary-fixed-dim": "#4cd7f6",
+                "primary-fixed": "#e2dfff",
+                "on-secondary-container": "#00424e",
+                "surface-container-high": "#222a3d",
+                "tertiary-fixed": "#6ffbbe",
+                "on-tertiary-fixed": "#002113",
+                "surface-container": "#171f33",
+                "primary-container": "#4f46e5",
+                "secondary": "#4cd7f6",
+                "on-primary-fixed-variant": "#3323cc",
+                "on-background": "#dae2fd",
+                "on-tertiary": "#003824",
+                "inverse-surface": "#dae2fd",
+                "primary": "#c3c0ff",
+                "on-secondary-fixed": "#001f26",
+                "outline": "#918fa1",
+                "on-primary-fixed": "#0f0069",
+                "surface-bright": "#31394d",
+                "on-primary": "#1d00a5",
+                "on-primary-container": "#dad7ff",
+                "on-error": "#690005",
+                "inverse-on-surface": "#283044",
+                "on-secondary-fixed-variant": "#004e5c",
+                "primary-fixed-dim": "#c3c0ff",
+                "surface-variant": "#2d3449",
+                "tertiary-container": "#006e4b",
+                "outline-variant": "#464555",
+                "surface-tint": "#c3c0ff",
+                "tertiary-fixed-dim": "#4edea3",
+                "surface": "#0b1326",
+                "inverse-primary": "#4d44e3",
+                "tertiary": "#4edea3",
+                "on-tertiary-fixed-variant": "#005236",
+                "on-surface": "#dae2fd",
+                "surface-dim": "#0b1326",
+                "surface-container-lowest": "#060e20",
+                "background": "#0b1326",
+                "error": "#ffb4ab",
+                "surface-container-highest": "#2d3449",
+                "on-error-container": "#ffdad6",
+                "secondary-fixed": "#acedff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "sm": "8px",
+                "gutter": "16px",
+                "margin-mobile": "16px",
+                "xl": "32px",
+                "margin-desktop": "40px",
+                "xs": "4px",
+                "md": "16px",
+                "lg": "24px",
+                "base": "4px"
+            },
+            "fontFamily": {
+                "body-lg": ["Inter"],
+                "headline-md": ["Geist"],
+                "headline-lg-mobile": ["Geist"],
+                "label-caps": ["JetBrains Mono"],
+                "body-md": ["Inter"],
+                "body-sm": ["Inter"],
+                "headline-lg": ["Geist"],
+                "code-block": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "code-block": ["14px", {"lineHeight": "22px", "fontWeight": "450"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(23, 31, 51, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(76, 215, 246, 0.15) 0%, transparent 70%);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .active-nav-link {
+            color: #dae2fd;
+            position: relative;
+        }
+        
+        .active-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #dae2fd;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-secondary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-md max-w-7xl mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">InzaTech</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="active-nav-link flex items-center gap-xs font-medium font-body-md text-body-md transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant font-medium font-body-md text-body-md hover:text-primary transition-colors duration-200" href="#">Widgets</a>
+<!-- Portals Dropdown -->
+<div class="group relative">
+<button class="flex items-center gap-xs text-on-surface-variant font-medium font-body-md text-body-md hover:text-primary transition-colors duration-200">Portals <span class="material-symbols-outlined text-sm">expand_more</span></button>
+<div class="absolute top-full left-0 mt-2 w-64 glass-panel rounded-xl p-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 grid grid-cols-1 gap-sm">
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Technology Tutorials</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Learning Portal</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">IT Project Lists</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Language Portal</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Career Portal</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Muslims Portal</a>
+</div>
+</div>
+<!-- Explore Dropdown -->
+<div class="group relative">
+<button class="flex items-center gap-xs text-on-surface-variant font-medium font-body-md text-body-md hover:text-primary transition-colors duration-200">Explore <span class="material-symbols-outlined text-sm">expand_more</span></button>
+<div class="absolute top-full left-0 mt-2 w-56 glass-panel rounded-xl p-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 grid grid-cols-1 gap-sm">
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Converters</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Calculators</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Generators</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Formatters</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">File Converter</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Utilities</a>
+<hr class="border-white/10 my-xs">
+<a class="text-body-sm text-secondary font-bold hover:text-secondary-fixed transition-colors" href="#">Browse all Apps →</a>
+</div>
+</div>
+<!-- AI Apps Dropdown -->
+<div class="group relative">
+<button class="flex items-center gap-xs text-on-surface-variant font-medium font-body-md text-body-md hover:text-primary transition-colors duration-200">AI Apps <span class="material-symbols-outlined text-sm">expand_more</span></button>
+<div class="absolute top-full left-0 mt-2 w-64 glass-panel rounded-xl p-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 grid grid-cols-1 gap-sm">
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">AI Chatbot</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">AI Writer</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">AI Code Generator</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">AI Image Generator</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">AI Prompt Library</a>
+<hr class="border-white/10 my-xs">
+<a class="text-body-sm text-secondary font-bold hover:text-secondary-fixed transition-colors" href="#">Browse all AI Apps →</a>
+</div>
+</div>
+<!-- Blog Media Dropdown -->
+<div class="group relative">
+<button class="flex items-center gap-xs text-on-surface-variant font-medium font-body-md text-body-md hover:text-primary transition-colors duration-200">Blog Media <span class="material-symbols-outlined text-sm">expand_more</span></button>
+<div class="absolute top-full left-0 mt-2 w-48 glass-panel rounded-xl p-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 grid grid-cols-1 gap-sm">
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Inzaghi's Blog</a>
+<a class="text-body-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Inzaghi's Media</a>
+</div>
+</div>
+<a class="text-on-surface-variant font-medium font-body-md text-body-md hover:text-primary transition-colors duration-200" href="#">Services</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors active:scale-95" data-icon="search">search</button>
+<div class="group relative">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors active:scale-95" data-icon="dark_mode">dark_mode</button>
+<div class="absolute top-full right-0 mt-2 w-32 glass-panel rounded-lg p-xs opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 flex flex-col">
+<button class="flex items-center gap-sm px-sm py-1 text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-variant/50 rounded transition-colors"><span class="material-symbols-outlined text-sm">light_mode</span> Light</button>
+<button class="flex items-center gap-sm px-sm py-1 text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-variant/50 rounded transition-colors"><span class="material-symbols-outlined text-sm">dark_mode</span> Dark</button>
+<button class="flex items-center gap-sm px-sm py-1 text-body-sm text-on-surface-variant hover:text-primary hover:bg-surface-variant/50 rounded transition-colors"><span class="material-symbols-outlined text-sm">settings_brightness</span> System</button>
+</div>
+</div>
+<button class="hidden md:block bg-primary-container text-on-primary-container px-lg py-sm rounded-lg font-bold active:scale-95 transition-all hover:brightness-110">Get Started</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant border border-outline-variant cursor-pointer hover:border-primary transition-colors">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7A2jJ-QvKoam9_4C1SNpsXNMU7J5Nxyap8DLaOODUBTBPX1hdkC0NQXxR57ndHhrU-UXPI86PITOHiIzRjWShCvN7GVYL5MvOq7uwNzJbsAMLGjYzWBgIXrkX-1cDRBj4G0LeSNDdgnuRML0KCjH2YHtCfbl9NebFV0GJUI-Tt863AWtEd_od-ZHgUg6P0_enfImAe1grUM2oz--n3mouqoAeMyPLlhMcBkMNUdFz4bDcO0ByW2Xmm2LfpnwxoEOPwvdf8PiKZaA">
+</div>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 px-gutter overflow-hidden min-h-screen flex flex-col justify-center items-center">
+<!-- AI Node Background -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 hero-glow"></div>
+</div>
+<div class="relative z-10 max-w-4xl text-center space-y-lg">
+<div class="inline-flex items-center gap-sm px-md py-xs rounded-full glass-panel text-secondary font-label-caps text-label-caps">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+                Next-Gen AI Core Available
+            </div>
+<h1 class="font-headline-lg text-headline-lg md:text-6xl text-white tracking-tight leading-tight">
+                Empowering <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Intelligence</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Build, deploy, and scale autonomous AI agents with the industry's most advanced developer ecosystem. High-density compute for the visionary engineer.
+            </p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-md pt-md">
+<button class="w-full md:w-auto bg-primary text-on-primary font-bold px-xl py-md rounded-lg shadow-[0_0_20px_rgba(195,192,255,0.3)] hover:scale-105 active:scale-95 transition-all">
+                    Get Started
+                </button>
+<button class="w-full md:w-auto glass-panel text-on-surface font-bold px-xl py-md rounded-lg flex items-center justify-center gap-sm hover:bg-surface-variant/50 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+                    Watch Demo
+                </button>
+</div>
+</div>
+</section>
+<!-- Trust Bar (Logo Marquee) -->
+<section class="py-xl bg-surface-container-lowest border-y border-outline-variant/30 overflow-hidden">
+<div class="flex gap-xl items-center animate-marquee whitespace-nowrap">
+<!-- Repeating Logos for Continuous Scroll -->
+<div class="flex items-center gap-xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+<span class="text-headline-md font-bold text-on-surface px-xl">NEXUS_TECH</span>
+<span class="text-headline-md font-bold text-on-surface px-xl">VOID_SYSTEMS</span>
+<span class="text-headline-md font-bold text-on-surface px-xl">QUANTUM_LABS</span>
+<span class="text-headline-md font-bold text-on-surface px-xl">NEURAL_WORKS</span>
+<span class="text-headline-md font-bold text-on-surface px-xl">CYBER_DYNE</span>
+<span class="text-headline-md font-bold text-on-surface px-xl">ETH_CORE</span>
+</div>
+<div class="flex items-center gap-xl grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+<span class="text-headline-md font-bold text-on-surface px-xl">NEXUS_TECH</span>
+<span class="text-headline-md font-bold text-on-surface px-xl">VOID_SYSTEMS</span>
+<span class="text-headline-md font-bold text-on-surface px-xl">QUANTUM_LABS</span>
+<span class="text-headline-md font-bold text-on-surface px-xl">NEURAL_WORKS</span>
+<span class="text-headline-md font-bold text-on-surface px-xl">CYBER_DYNE</span>
+<span class="text-headline-md font-bold text-on-surface px-xl">ETH_CORE</span>
+</div>
+</div>
+</section>
+<!-- Ecosystem Overview (Bento Grid Style) -->
+<section class="py-32 px-gutter max-w-7xl mx-auto">
+<div class="text-center mb-xl"><h2 class="font-headline-lg text-headline-lg text-white mb-md">The InzaTech Ecosystem</h2>
+<p class="font-body-md text-on-surface-variant max-w-2xl mx-auto">Four synchronized pillars designed for complete mastery over developer workflows, specialized knowledge, autonomous AI, and real-time intelligence.</p></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+  <!-- Pillar 1: Tools & Utilities -->
+  <div class="glass-panel p-xl rounded-xl group hover:border-secondary transition-all flex flex-col h-full relative overflow-hidden">
+    <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mb-lg group-hover:scale-110 transition-transform">
+      <span class="material-symbols-outlined text-3xl" data-icon="build">build</span>
+    </div>
+    <h3 class="font-headline-md text-headline-md text-white mb-sm">Tools &amp; Utilities</h3>
+    <p class="text-on-surface-variant font-body-sm mb-md flex-grow">High-precision developer and computing utilities: Converters, Calculators, Generators, Formatters, File Converters, Tester Tools, and System Utilities.</p>
+    <div class="flex flex-wrap gap-xs mb-lg">
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-secondary font-label-caps text-xs">Converters</span>
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-secondary font-label-caps text-xs">Calculators</span>
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-secondary font-label-caps text-xs">Generators</span>
+    </div>
+    <a class="text-secondary font-label-caps text-label-caps flex items-center gap-sm group-hover:translate-x-1 transition-transform mt-auto" href="#">
+      EXPLORE TOOLS <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+    </a>
+  </div>
+
+  <!-- Pillar 2: Portals -->
+  <div class="glass-panel p-xl rounded-xl group hover:border-tertiary transition-all flex flex-col h-full relative overflow-hidden">
+    <div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary mb-lg group-hover:scale-110 transition-transform">
+      <span class="material-symbols-outlined text-3xl" data-icon="language">language</span>
+    </div>
+    <h3 class="font-headline-md text-headline-md text-white mb-sm">Portals</h3>
+    <p class="text-on-surface-variant font-body-sm mb-md flex-grow">Specialized knowledge and enterprise hub: Technology Tutorials, Learning Portal, IT Project Lists, Career Portal, Language Portal, and Muslims Portal.</p>
+    <div class="flex flex-wrap gap-xs mb-lg">
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-tertiary font-label-caps text-xs">Tutorials</span>
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-tertiary font-label-caps text-xs">Learning</span>
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-tertiary font-label-caps text-xs">Projects</span>
+    </div>
+    <a class="text-tertiary font-label-caps text-label-caps flex items-center gap-sm group-hover:translate-x-1 transition-transform mt-auto" href="#">
+      ACCESS PORTALS <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+    </a>
+  </div>
+
+  <!-- Pillar 3: AI Apps -->
+  <div class="glass-panel p-xl rounded-xl group hover:border-primary transition-all flex flex-col h-full relative overflow-hidden">
+    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-lg group-hover:scale-110 transition-transform">
+      <span class="material-symbols-outlined text-3xl" data-icon="psychology">psychology</span>
+    </div>
+    <h3 class="font-headline-md text-headline-md text-white mb-sm">AI Apps</h3>
+    <p class="text-on-surface-variant font-body-sm mb-md flex-grow">Autonomous intelligence and generative workflow suite: AI Chatbot (Cortex), AI Writer, AI Code Generator, AI Image Studio, and Prompt Library.</p>
+    <div class="flex flex-wrap gap-xs mb-lg">
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-primary font-label-caps text-xs">Cortex Chat</span>
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-primary font-label-caps text-xs">Code Gen</span>
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-primary font-label-caps text-xs">Image Studio</span>
+    </div>
+    <a class="text-primary font-label-caps text-label-caps flex items-center gap-sm group-hover:translate-x-1 transition-transform mt-auto" href="#">
+      LAUNCH AI APPS <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+    </a>
+  </div>
+
+  <!-- Pillar 4: Widgets -->
+  <div class="glass-panel p-xl rounded-xl group hover:border-secondary transition-all flex flex-col h-full relative overflow-hidden">
+    <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mb-lg group-hover:scale-110 transition-transform">
+      <span class="material-symbols-outlined text-3xl" data-icon="widgets">widgets</span>
+    </div>
+    <h3 class="font-headline-md text-headline-md text-white mb-sm">Widgets</h3>
+    <p class="text-on-surface-variant font-body-sm mb-md flex-grow">Real-time telemetry, IoT, and interactive modules: Live Weather, Stocks API, Maps &amp; Geospatial, Sports Telemetry, Spotify Player, and Date/Calendar.</p>
+    <div class="flex flex-wrap gap-xs mb-lg">
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-secondary font-label-caps text-xs">Live Telemetry</span>
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-secondary font-label-caps text-xs">Stocks API</span>
+      <span class="px-sm py-xs rounded bg-surface-variant/50 text-secondary font-label-caps text-xs">Spotify</span>
+    </div>
+    <a class="text-secondary font-label-caps text-label-caps flex items-center gap-sm group-hover:translate-x-1 transition-transform mt-auto" href="#">
+      VIEW WIDGETS <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+    </a>
+  </div>
+</div>
+</section>
+<!-- Feature Highlight (Dashboard Preview) -->
+<section class="py-32 px-gutter bg-surface-container-low overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-white mb-md">Professional Services &amp; Solutions</h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Expert-led technical consulting, custom AI implementation, and digital transformation for modern enterprises.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- AI Implementation -->
+<div class="glass-panel p-xl rounded-xl group hover:border-secondary transition-all flex flex-col h-full">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mb-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">smart_toy</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white mb-md">AI Implementation</h3>
+<p class="text-on-surface-variant font-body-sm">Custom LLM integration and autonomous agent deployment tailored to your business needs.</p>
+</div>
+<!-- Software Engineering -->
+<div class="glass-panel p-xl rounded-xl group hover:border-primary transition-all flex flex-col h-full">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">code</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white mb-md">Software Engineering</h3>
+<p class="text-on-surface-variant font-body-sm">High-performance web and mobile application development using modern tech stacks.</p>
+</div>
+<!-- UI/UX Design -->
+<div class="glass-panel p-xl rounded-xl group hover:border-tertiary transition-all flex flex-col h-full">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center text-tertiary mb-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">palette</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white mb-md">UI/UX Design</h3>
+<p class="text-on-surface-variant font-body-sm">Research-driven interface design and brand identity systems for digital products.</p>
+</div>
+<!-- Technical Consulting -->
+<div class="glass-panel p-xl rounded-xl group hover:border-secondary transition-all flex flex-col h-full">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mb-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">architecture</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white mb-md">Technical Consulting</h3>
+<p class="text-on-surface-variant font-body-sm">Strategic guidance on AI architecture, cloud infrastructure, and scalability.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant"><div class="max-w-7xl mx-auto px-margin-desktop py-xl">
+<div class="mb-xl">
+<span class="font-headline-md text-headline-md text-primary font-bold">InzaTech</span>
+<p class="font-body-sm text-on-surface-variant mt-2">The All-in-One AI Utility Platform</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-lg mb-xl">
+<div class="space-y-md">
+<h4 class="font-label-caps text-label-caps text-white">PRODUCTS</h4>
+<nav class="flex flex-col gap-sm">
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Explore Apps</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">AI Apps</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Widgets</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Portals</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Blog</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">InzaTech Mobile</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Inzaghi's Sites (Old)</a>
+</nav>
+</div>
+<div class="space-y-md">
+<h4 class="font-label-caps text-label-caps text-white">TOOLS</h4>
+<nav class="flex flex-col gap-sm">
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Calculators</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Converters</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Formatters</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Generators</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">File Converter</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Utilities</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Tester Tools</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Developer Tools</a>
+<a class="font-body-sm text-secondary font-bold hover:text-secondary-fixed transition-colors" href="#">All Tools →</a>
+</nav>
+</div>
+<div class="space-y-md">
+<h4 class="font-label-caps text-label-caps text-white">AI APPS</h4>
+<nav class="flex flex-col gap-sm">
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">AI Chatbot</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">AI Writer</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">AI Code Generator</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">AI Image Generator</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">AI Prompt Library</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">AI Translator</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">AI OCR</a>
+<a class="font-body-sm text-secondary font-bold hover:text-secondary-fixed transition-colors" href="#">All AI Apps →</a>
+</nav>
+</div>
+<div class="space-y-md">
+<h4 class="font-label-caps text-label-caps text-white">PORTALS</h4>
+<nav class="flex flex-col gap-sm">
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Technology Tutorials</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Learning Portal</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">IT Project Lists</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Language Portal</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Career Portal</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Muslims Portal</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Documentation</a>
+<a class="font-body-sm text-secondary font-bold hover:text-secondary-fixed transition-colors" href="#">All Portals →</a>
+</nav>
+</div>
+<div class="space-y-md">
+<h4 class="font-label-caps text-label-caps text-white">COMPANY</h4>
+<nav class="flex flex-col gap-sm">
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">About</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Services</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Sitemap</a>
+</nav>
+</div>
+<div class="space-y-md">
+<h4 class="font-label-caps text-label-caps text-white">LEGAL</h4>
+<nav class="flex flex-col gap-sm">
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Disclaimer</a>
+<a class="font-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Cookie Policy</a>
+</nav>
+</div>
+</div>
+<div class="py-lg border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex flex-col md:flex-row items-center gap-md">
+<span class="font-label-caps text-label-caps text-white">Social Media (Inzaghi's Media):</span>
+<div class="flex gap-md">
+<a class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors" href="#" title="GitHub">hub</a>
+<a class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors" href="#" title="LinkedIn">work</a>
+<a class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors" href="#" title="YouTube">play_circle</a>
+<a class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors" href="#" title="Threads">alternate_email</a>
+<a class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors" href="#" title="Instagram">photo_camera</a>
+<a class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors" href="#" title="TikTok">music_note</a>
+<a class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors" href="#" title="X/Twitter">close</a>
+</div>
+</div>
+</div>
+<div class="py-lg border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-md text-center md:text-left">
+<div class="space-y-xs">
+<p class="font-body-sm text-on-surface-variant">© 2026 InzaTech. All rights reserved.</p>
+<p class="font-body-sm text-on-surface-variant opacity-75">Powered by Next.js • React • Tailwind CSS • Notion API • Blogger API</p>
+</div>
+<p class="font-body-sm text-on-surface-variant">Made with ❤️ in Indonesia</p>
+</div>
+</div></footer>
+<script>
+        // Micro-interaction for hover effects on glass panels
+        document.querySelectorAll('.glass-panel').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+
+
+</body></html>

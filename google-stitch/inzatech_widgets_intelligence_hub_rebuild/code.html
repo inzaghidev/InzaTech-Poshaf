@@ -1,0 +1,602 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>InzaTech Widgets Hub | Intelligence Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;family=Geist:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-secondary": "#003640",
+                "secondary-container": "#03b5d3",
+                "surface-bright": "#31394d",
+                "on-tertiary-fixed": "#002113",
+                "on-secondary-fixed-variant": "#004e5c",
+                "tertiary-fixed-dim": "#4edea3",
+                "on-error-container": "#ffdad6",
+                "surface-dim": "#0b1326",
+                "primary": "#c3c0ff",
+                "on-tertiary": "#003824",
+                "on-secondary-container": "#00424e",
+                "primary-container": "#4f46e5",
+                "on-secondary-fixed": "#001f26",
+                "error-container": "#93000a",
+                "background": "#0b1326",
+                "tertiary": "#4edea3",
+                "inverse-primary": "#4d44e3",
+                "on-error": "#690005",
+                "tertiary-container": "#006e4b",
+                "on-surface": "#dae2fd",
+                "secondary-fixed-dim": "#4cd7f6",
+                "on-background": "#dae2fd",
+                "surface": "#0b1326",
+                "error": "#ffb4ab",
+                "surface-container-highest": "#2d3449",
+                "primary-fixed-dim": "#c3c0ff",
+                "secondary-fixed": "#acedff",
+                "on-primary-container": "#dad7ff",
+                "surface-variant": "#2d3449",
+                "surface-container-lowest": "#060e20",
+                "surface-container-low": "#131b2e",
+                "on-tertiary-container": "#67f4b7",
+                "on-primary": "#1d00a5",
+                "outline": "#918fa1",
+                "on-tertiary-fixed-variant": "#005236",
+                "surface-container": "#171f33",
+                "tertiary-fixed": "#6ffbbe",
+                "surface-tint": "#c3c0ff",
+                "surface-container-high": "#222a3d",
+                "on-primary-fixed": "#0f0069",
+                "on-surface-variant": "#c7c4d8",
+                "inverse-on-surface": "#283044",
+                "on-primary-fixed-variant": "#3323cc",
+                "secondary": "#4cd7f6",
+                "inverse-surface": "#dae2fd",
+                "primary-fixed": "#e2dfff",
+                "outline-variant": "#464555"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "base": "4px",
+                "lg": "24px",
+                "xs": "4px",
+                "gutter": "16px",
+                "xl": "32px",
+                "sm": "8px",
+                "md": "16px",
+                "margin-desktop": "40px",
+                "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                "headline-lg-mobile": ["Geist"],
+                "body-sm": ["Inter"],
+                "label-caps": ["JetBrains Mono"],
+                "headline-md": ["Geist"],
+                "headline-lg": ["Geist"],
+                "code-block": ["JetBrains Mono"],
+                "body-md": ["Inter"],
+                "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "code-block": ["14px", {"lineHeight": "22px", "fontWeight": "450"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(19, 27, 46, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(195, 192, 255, 0.2);
+            background: rgba(19, 27, 46, 0.5);
+        }
+        .sidebar-item-active {
+            background: linear-gradient(90deg, rgba(79, 70, 229, 0.8), rgba(79, 70, 229, 0.2));
+            color: #ffffff;
+            box-shadow: 0 4px 15px -3px rgba(79, 70, 229, 0.4);
+        }
+        .glow-text-primary {
+            text-shadow: 0 0 10px rgba(195, 192, 255, 0.4);
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060e20;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3449;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-xl border-b border-white/5 flex justify-between items-center px-margin-desktop h-[72px]">
+<div class="flex items-center gap-xl">
+<span class="font-headline-lg text-headline-lg font-extrabold text-primary tracking-tighter">InzaTech</span>
+<div class="hidden md:flex gap-lg items-center"><a class="text-on-surface-variant font-medium hover:text-primary transition-colors text-body-sm" href="#">Home</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 text-body-sm" href="#">Widgets</a>
+<div class="relative group">
+  <button class="flex items-center gap-1 text-on-surface-variant font-medium hover:text-primary transition-colors text-body-sm">
+    Portals <span class="material-symbols-outlined text-[16px]">expand_more</span>
+  </button>
+  <div class="absolute top-full left-0 mt-2 w-48 bg-surface-container-high border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 p-2">
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Technology Tutorials</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Learning Portal</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">IT Project Lists</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Language Portal</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Career Portal</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Muslims Portal</a>
+  </div>
+</div>
+<div class="relative group">
+  <button class="flex items-center gap-1 text-on-surface-variant font-medium hover:text-primary transition-colors text-body-sm">
+    Explore <span class="material-symbols-outlined text-[16px]">expand_more</span>
+  </button>
+  <div class="absolute top-full left-0 mt-2 w-48 bg-surface-container-high border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 p-2">
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Converters</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Calculators</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Generators</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Formatters</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">File Converter</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Utilities</a>
+    <div class="my-1 border-t border-white/5"></div>
+    <a href="#" class="block px-3 py-2 text-body-sm text-primary font-medium hover:bg-white/5 rounded-md flex items-center justify-between">Browse all Apps <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+  </div>
+</div>
+<div class="relative group">
+  <button class="flex items-center gap-1 text-on-surface-variant font-medium hover:text-primary transition-colors text-body-sm">
+    AI Apps <span class="material-symbols-outlined text-[16px]">expand_more</span>
+  </button>
+  <div class="absolute top-full left-0 mt-2 w-56 bg-surface-container-high border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 p-2">
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">AI Chatbot</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">AI Writer</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">AI Code Generator</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">AI Image Generator</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">AI Prompt Library</a>
+    <div class="my-1 border-t border-white/5"></div>
+    <a href="#" class="block px-3 py-2 text-body-sm text-primary font-medium hover:bg-white/5 rounded-md flex items-center justify-between">Browse all AI Apps <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+  </div>
+</div>
+<div class="relative group">
+  <button class="flex items-center gap-1 text-on-surface-variant font-medium hover:text-primary transition-colors text-body-sm">
+    Blog Media <span class="material-symbols-outlined text-[16px]">expand_more</span>
+  </button>
+  <div class="absolute top-full left-0 mt-2 w-48 bg-surface-container-high border border-white/10 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 p-2">
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Inzaghi's Blog</a>
+    <a href="#" class="block px-3 py-2 text-body-sm text-on-surface-variant hover:text-primary hover:bg-white/5 rounded-md">Inzaghi's Media</a>
+  </div>
+</div>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors text-body-sm" href="#">Services</a></div>
+</div>
+<div class="flex items-center gap-md">
+
+<button class="material-symbols-outlined text-outline hover:text-on-surface transition-colors">settings</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-white/10 ml-2">
+<img alt="User Profile" class="w-full h-full object-cover" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgcng9IjgiIGZpbGw9IiNlOGVhZWQiLz48cGF0aCBkPSJNMTcwIDEzMCBsMzAgNDAgbDIwLTE1IGw0MCA1NSBIMTQweiIgZmlsbD0iI2JkYzFjNiIvPjxjaXJjbGUgY3g9IjI1MCIgY3k9IjEyMCIgcj0iMTgiIGZpbGw9IiNiZGMxYzYiLz48L3N2Zz4=">
+</div>
+</div>
+</nav>
+<div class="flex flex-1 pt-[72px]">
+<!-- Sidebar -->
+<aside class="w-72 border-r border-white/5 bg-surface-container-lowest backdrop-blur-xl flex flex-col fixed left-0 h-[calc(100vh-72px)] overflow-y-auto z-40">
+<div class="p-lg">
+<div class="flex items-center gap-md mb-xl">
+<div class="h-10 w-10 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div>
+<h2 class="text-on-surface font-headline-md text-body-md leading-none mb-1">Widget Hub</h2>
+<p class="text-outline text-[10px] font-label-caps uppercase tracking-wider">v2.4 Enterprise</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="sidebar-item-active flex items-center gap-3 px-4 py-3 rounded-xl text-body-sm font-semibold transition-all group" href="#">
+<span class="material-symbols-outlined text-[22px]">grid_view</span>
+                    All Widgets
+                </a>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 rounded-xl text-body-sm font-medium hover:bg-white/5 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">calendar_today</span>
+                    Date/Time and Calendar
+                </a>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 rounded-xl text-body-sm font-medium hover:bg-white/5 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">cloud</span>
+                    Weather [API]
+                </a>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 rounded-xl text-body-sm font-medium hover:bg-white/5 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">query_stats</span>
+                    Stocks [API]
+                </a>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 rounded-xl text-body-sm font-medium hover:bg-white/5 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">map</span>
+                    Maps &amp; Locations
+                </a>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 rounded-xl text-body-sm font-medium hover:bg-white/5 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">music_note</span>
+                    Music (Spotify API)
+                </a>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 rounded-xl text-body-sm font-medium hover:bg-white/5 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">sports_esports</span>
+                    Sports Widgets [API]
+                </a>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 rounded-xl text-body-sm font-medium hover:bg-white/5 hover:text-primary transition-all" href="#"><span class="material-symbols-outlined text-[22px]">rss_feed</span>RSS News Feed</a><a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 rounded-xl text-body-sm font-medium hover:bg-white/5 hover:text-primary transition-all" href="#"><span class="material-symbols-outlined text-[22px]">mosque</span>Muslims Portal</a></nav>
+</div>
+
+</aside>
+<!-- Main Content -->
+<main class="ml-72 flex-1 p-margin-desktop">
+<header class="mb-xl flex justify-between items-end">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-xs">Widgets Hub</h1>
+<p class="text-on-surface-variant font-body-md">Customize your personal workspace with real-time intelligence modules.</p>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-2 bg-tertiary-container/20 text-tertiary border border-tertiary/30 px-sm py-1.5 rounded-full font-label-caps text-[10px]">
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse"></span> AI SYNC ACTIVE
+                </div>
+<button class="bg-surface-container-high text-on-surface px-md py-2 rounded-lg font-label-caps text-[11px] border border-white/10 flex items-center gap-2 hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span> ADD WIDGET
+                </button>
+</div>
+</header>
+<!-- Widgets Grid -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Clock Widget -->
+<section class="col-span-12 md:col-span-5 glass-card p-xl rounded-xl">
+<div class="flex justify-between items-start mb-md">
+<span class="material-symbols-outlined text-outline">schedule</span>
+<span class="material-symbols-outlined text-outline">more_vert</span>
+</div>
+<div class="text-center mb-xl">
+<div class="text-[56px] font-bold text-on-surface tracking-tighter leading-none glow-text-primary" id="clock">22:07:44</div>
+<div class="font-label-caps text-outline text-[12px] mt-2 tracking-widest uppercase">Thursday, Nov 14</div>
+</div>
+<div class="grid grid-cols-7 gap-y-3 text-center text-[10px] font-label-caps">
+<div class="text-outline">S</div><div class="text-outline">M</div><div class="text-outline">T</div><div class="text-outline">W</div><div class="text-outline">T</div><div class="text-outline">F</div><div class="text-outline">S</div>
+<div class="text-outline-variant">27</div><div class="text-outline-variant">28</div><div class="text-outline-variant">29</div><div class="text-outline-variant">30</div><div class="text-outline-variant">31</div><div class="text-on-surface">1</div><div class="text-on-surface">2</div>
+<div class="text-on-surface">3</div><div class="text-on-surface">4</div><div class="text-on-surface">5</div><div class="text-on-surface">6</div><div class="text-on-surface">7</div><div class="text-on-surface">8</div><div class="text-on-surface">9</div>
+<div class="text-on-surface">10</div><div class="text-on-surface">11</div><div class="text-on-surface">12</div><div class="text-on-surface">13</div><div class="bg-primary text-background rounded-full font-bold">14</div><div class="text-on-surface">15</div><div class="text-on-surface">16</div>
+</div>
+</section>
+<!-- Weather Widget -->
+<section class="col-span-12 md:col-span-4 glass-card p-xl rounded-xl flex flex-col justify-between">
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">cloud_queue</span>
+<span class="font-label-caps text-on-surface text-[11px]">San Francisco, CA</span>
+</div>
+<span class="text-tertiary font-label-caps text-[10px]">LIVE</span>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<div class="text-[48px] font-bold text-on-surface leading-tight">68°F</div>
+<div class="text-body-sm text-outline">Partly Cloudy • H: 72° L: 58°</div>
+</div>
+<span class="material-symbols-outlined text-[64px] text-secondary">wb_twilight</span>
+</div>
+<div class="grid grid-cols-5 gap-sm mt-xl pt-xl border-t border-white/5 text-center">
+<div><p class="text-[9px] text-outline font-label-caps mb-1">FRI</p><span class="material-symbols-outlined text-primary text-[20px]">wb_sunny</span><p class="text-[11px] text-on-surface">74°</p></div>
+<div><p class="text-[9px] text-outline font-label-caps mb-1">SAT</p><span class="material-symbols-outlined text-outline text-[20px]">cloud</span><p class="text-[11px] text-on-surface">69°</p></div>
+<div><p class="text-[9px] text-outline font-label-caps mb-1">SUN</p><span class="material-symbols-outlined text-outline text-[20px]">cloud_queue</span><p class="text-[11px] text-on-surface">62°</p></div>
+<div><p class="text-[9px] text-outline font-label-caps mb-1">MON</p><span class="material-symbols-outlined text-secondary text-[20px]">thunderstorm</span><p class="text-[11px] text-on-surface">58°</p></div>
+<div><p class="text-[9px] text-outline font-label-caps mb-1">TUE</p><span class="material-symbols-outlined text-secondary text-[20px]">partly_cloudy_day</span><p class="text-[11px] text-on-surface">65°</p></div>
+</div>
+</section>
+<!-- Stocks Widget -->
+<section class="col-span-12 md:col-span-3 glass-card rounded-xl flex flex-col">
+<div class="p-md border-b border-white/5 flex justify-between items-center">
+<span class="font-label-caps text-on-surface text-[11px]">Market Pulse</span>
+<span class="material-symbols-outlined text-outline text-[18px]">refresh</span>
+</div>
+<div class="p-md space-y-lg flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center font-bold text-[10px]">NVDA</div>
+<div>
+<p class="text-on-surface font-bold text-[13px]">NVIDIA Corp.</p>
+<p class="text-[9px] text-outline font-label-caps">NASDAQ</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-on-surface font-bold text-[13px]">147.22</p>
+<p class="text-tertiary text-[10px]">+2.81%</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center font-bold text-[10px]">AAPL</div>
+<div>
+<p class="text-on-surface font-bold text-[13px]">Apple Inc.</p>
+<p class="text-[9px] text-outline font-label-caps">NASDAQ</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-on-surface font-bold text-[13px]">228.14</p>
+<p class="text-error text-[10px]">-0.12%</p>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center font-bold text-[10px]">MSFT</div>
+<div>
+<p class="text-on-surface font-bold text-[13px]">Microsoft</p>
+<p class="text-[9px] text-outline font-label-caps">NASDAQ</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-on-surface font-bold text-[13px]">425.29</p>
+<p class="text-tertiary text-[10px]">+1.05%</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Map Widget -->
+<section class="col-span-12 md:col-span-8 glass-card rounded-xl overflow-hidden relative min-h-[340px]">
+<div class="absolute top-4 left-4 z-10 glass-card px-md py-2 rounded-lg border border-white/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[16px]">location_on</span>
+<span class="font-label-caps text-on-surface text-[10px]">HQ: Menlo Park, CA</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-[#060e20]">
+<div class="w-full h-full opacity-60 mix-blend-screen" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBBs0Je_rvFBUsIovk0a1n0xKE5rPP8Ix2QUlRe4wUfIo5lNn44xEvka35xy28oX-_hz2DAap--MJ8QGhq4Jp1bZwvJFsJbOUKNi9WXI3YZM4yrQmhthcNGje62BO3rgyLqOc_c5W526zu8vbgHaws270mLfP0yvRJrxz56bsn4VCvdFSB8lSNlVSfknjL6hS29BnI9CXG-owb8edriQmo6dHL9nGoTvf1gMW_IuCJh_rR73koliaVF'); background-size: cover; background-position: center;"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0b1326] via-transparent to-transparent"></div>
+</div>
+<div class="absolute bottom-4 right-4 z-10 flex flex-col gap-1">
+<button class="w-8 h-8 bg-surface-container-high rounded border border-white/10 flex items-center justify-center text-on-surface hover:bg-surface-variant transition-colors"><span class="material-symbols-outlined text-[18px]">add</span></button>
+<button class="w-8 h-8 bg-surface-container-high rounded border border-white/10 flex items-center justify-center text-on-surface hover:bg-surface-variant transition-colors"><span class="material-symbols-outlined text-[18px]">remove</span></button>
+</div>
+</section>
+<!-- Music Widget -->
+<section class="col-span-12 md:col-span-4 glass-card p-xl rounded-xl flex flex-col justify-between bg-gradient-to-br from-primary/5 to-transparent">
+<div class="flex justify-between items-center mb-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">headphones</span>
+<span class="font-label-caps text-on-surface text-[10px]">CURRENT JAM</span>
+</div>
+</div>
+<div class="flex flex-col items-center py-4">
+<div class="w-40 h-40 rounded-xl overflow-hidden shadow-2xl mb-lg border border-white/10 relative group">
+<img alt="Album Art" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbxvi979ksLQQhrrf80XYYhqDSb7kH8V_XEVefE1wq4zz6U7qOIE_uTG2w8CQeFWP6FELcHC7yNV1oQw6KUKE4PX40QoqdYa4I1kKiztAotv4jiwQuZ5vnCNQSJspYu9ffRLebLIfDbb6nCzdzEMXmfRSrEVV6Zo4OkhVftB9TmllxDWRFpp___LNs35EiyDDMZvbxGl9JLvY7uL9YqwkOSFxpJly-SETgtNeWmfwOT5CeALqmXRoy">
+</div>
+<div class="text-center">
+<h3 class="text-on-surface font-headline-md text-body-lg font-bold mb-1">Cyberpunk D...</h3>
+<p class="text-secondary font-body-sm">Night City Radio</p>
+</div>
+</div>
+<div class="mt-lg">
+<div class="flex justify-center items-center gap-xl mb-md">
+<button class="material-symbols-outlined text-outline hover:text-on-surface transition-colors">skip_previous</button>
+<button class="h-12 w-12 bg-on-surface text-background rounded-full flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pause</span>
+</button>
+<button class="material-symbols-outlined text-outline hover:text-on-surface transition-colors">skip_next</button>
+</div>
+<div class="h-1 w-full bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[65%]"></div>
+</div>
+<div class="flex justify-between text-[10px] text-outline font-mono mt-2">
+<span class="">2:14</span>
+<span class="">3:45</span>
+</div>
+</div>
+</section>
+<!-- Sports Widget -->
+<section class="col-span-12 md:col-span-6 glass-card p-xl rounded-xl">
+<div class="flex justify-between items-center mb-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]">sports_soccer</span>
+<span class="font-label-caps text-on-surface text-[11px]">Premier League</span>
+</div>
+<span class="text-tertiary border border-tertiary/30 px-2 py-0.5 rounded text-[9px] font-label-caps">LIVE</span>
+</div>
+<div class="space-y-lg">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-red-600/20 border border-red-600/30 flex items-center justify-center font-bold text-[10px]">ARS</div>
+<span class="font-headline-md text-on-surface text-body-md">Arsenal</span>
+</div>
+<span class="text-[28px] font-bold text-on-surface">2</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-blue-600/20 border border-blue-600/30 flex items-center justify-center font-bold text-[10px]">CHE</div>
+<span class="font-headline-md text-on-surface text-body-md">Chelsea</span>
+</div>
+<span class="text-[28px] font-bold text-on-surface">1</span>
+</div>
+</div>
+<div class="mt-xl pt-lg border-t border-white/5 text-center">
+<p class="text-[11px] text-outline">Stamford Bridge • 72'</p>
+</div>
+<div class="flex justify-between mt-xl text-[10px] font-label-caps text-outline uppercase tracking-widest">
+<span class="">Upcoming</span>
+<span class="text-on-surface">MCI vs LIV • 20:45</span>
+</div>
+</section>
+<!-- System Monitor Widget -->
+<section class="col-span-12 md:col-span-6 glass-card p-xl rounded-xl">
+<div class="flex justify-between items-center mb-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">monitoring</span>
+<span class="font-label-caps text-on-surface text-[11px]">Node Status</span>
+</div>
+<span class="text-outline text-[10px] font-label-caps">Worker #MT2</span>
+</div>
+<div class="space-y-xl">
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-label-caps">
+<span class="text-on-surface">CPU Usage</span>
+<span class="text-primary">42%</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[42%] shadow-[0_0_10px_rgba(195,192,255,0.4)]"></div>
+</div>
+</div>
+<div class="flex justify-between items-center py-2 border-y border-white/5">
+<span class="text-[11px] font-label-caps text-on-surface">Memory Leak</span>
+<span class="text-tertiary text-[11px] font-label-caps">None</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-label-caps">
+<span class="text-on-surface">Network I/O</span>
+<span class="text-secondary">1.2 GB/s</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[65%] shadow-[0_0_10px_rgba(76,215,246,0.4)]"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="col-span-12 md:col-span-6 glass-card p-xl rounded-xl flex flex-col justify-between"><div class="flex justify-between items-center mb-lg"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[18px]">rss_feed</span><span class="font-label-caps text-on-surface text-[11px]">RSS News Feed</span><span class="bg-tertiary-container/20 text-tertiary border border-tertiary/30 px-2 py-0.5 rounded-full font-label-caps text-[9px] flex items-center gap-1"><span class="w-1.5 h-1.5 bg-tertiary rounded-full animate-pulse"></span> LIVE FEED</span></div><button class="material-symbols-outlined text-outline hover:text-on-surface text-[18px] transition-colors">refresh</button></div><div class="space-y-3 flex-1"><div class="p-3 rounded-lg bg-surface-container-high border border-white/5 hover:border-primary/20 transition-all"><div class="flex items-center justify-between mb-1"><span class="px-2 py-0.5 rounded bg-primary/20 text-primary font-label-caps text-[9px] uppercase tracking-wider">AI</span><span class="text-[10px] text-outline font-label-caps">12m ago</span></div><h4 class="text-on-surface font-headline-md text-[13px] font-semibold hover:text-primary transition-colors cursor-pointer leading-tight">Anthropic releases Claude 3.5 Sonnet updates</h4><p class="text-outline text-body-sm text-[11px] mt-1 line-clamp-1">Enhanced coding benchmarks and improved tool calling latency across modern APIs.</p></div><div class="p-3 rounded-lg bg-surface-container-high border border-white/5 hover:border-primary/20 transition-all"><div class="flex items-center justify-between mb-1"><span class="px-2 py-0.5 rounded bg-secondary-container/20 text-secondary font-label-caps text-[9px] uppercase tracking-wider">Autonomous</span><span class="text-[10px] text-outline font-label-caps">45m ago</span></div><h4 class="text-on-surface font-headline-md text-[13px] font-semibold hover:text-primary transition-colors cursor-pointer leading-tight">OpenAI unveils autonomous agent architecture</h4><p class="text-outline text-body-sm text-[11px] mt-1 line-clamp-1">Operator framework provides seamless browser grounding and multi-step tasks.</p></div><div class="p-3 rounded-lg bg-surface-container-high border border-white/5 hover:border-primary/20 transition-all"><div class="flex items-center justify-between mb-1"><span class="px-2 py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-caps text-[9px] uppercase tracking-wider">Dev</span><span class="text-[10px] text-outline font-label-caps">2h ago</span></div><h4 class="text-on-surface font-headline-md text-[13px] font-semibold hover:text-primary transition-colors cursor-pointer leading-tight">Next.js 15 brings enhanced server action caching</h4><p class="text-outline text-body-sm text-[11px] mt-1 line-clamp-1">Deterministic compilation pipelines with revamped static rendering primitives.</p></div></div><div class="mt-4 pt-3 border-t border-white/5 flex justify-between items-center text-[10px] font-label-caps text-outline"><span class="">Aggregating 18 Feeds</span><a href="#" class="text-primary hover:underline flex items-center gap-1 font-medium">View All Headlines <span class="material-symbols-outlined text-[13px]">arrow_forward</span></a></div></section><section class="col-span-12 md:col-span-6 glass-card p-xl rounded-xl flex flex-col justify-between"><div class="flex justify-between items-center mb-lg"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-[18px]">mosque</span><span class="font-label-caps text-on-surface text-[11px]">Muslims Portal</span><span class="border border-white/10 bg-surface-container-high px-2 py-0.5 rounded text-outline text-[10px] font-label-caps">Jakarta (WIB) / GMT+7</span></div><span class="text-primary font-label-caps text-[10px] bg-primary/20 border border-primary/20 px-2 py-0.5 rounded">14 Jumada al-Ula 1446</span></div><div class="grid grid-cols-5 gap-2 text-center my-2"><div class="p-2.5 rounded-lg bg-surface-container-high border border-white/5"><p class="text-[10px] font-label-caps text-outline uppercase mb-1">Fajr</p><p class="text-[13px] font-bold text-on-surface font-mono">04:18</p><span class="text-[9px] text-outline block mt-0.5">AM</span></div><div class="p-2.5 rounded-lg bg-surface-container-high border border-white/5"><p class="text-[10px] font-label-caps text-outline uppercase mb-1">Dhuhr</p><p class="text-[13px] font-bold text-on-surface font-mono">11:45</p><span class="text-[9px] text-outline block mt-0.5">AM</span></div><div class="p-2.5 rounded-lg bg-surface-container-high border border-white/5"><p class="text-[10px] font-label-caps text-outline uppercase mb-1">Asr</p><p class="text-[13px] font-bold text-on-surface font-mono">15:02</p><span class="text-[9px] text-outline block mt-0.5">PM</span></div><div class="p-2.5 rounded-lg bg-primary/20 border border-primary/40 shadow-[0_0_12px_rgba(195,192,255,0.25)] relative"><div class="absolute -top-2 left-1/2 -translate-x-1/2 bg-primary text-background text-[8px] font-bold px-1.5 py-0.2 rounded-full font-label-caps leading-none uppercase">Next</div><p class="text-[10px] font-label-caps text-primary font-semibold uppercase mb-1">Maghrib</p><p class="text-[13px] font-bold text-on-surface font-mono">17:56</p><span class="text-[9px] text-primary font-medium block mt-0.5">In 42m</span></div><div class="p-2.5 rounded-lg bg-surface-container-high border border-white/5"><p class="text-[10px] font-label-caps text-outline uppercase mb-1">Isha</p><p class="text-[13px] font-bold text-on-surface font-mono">19:08</p><span class="text-[9px] text-outline block mt-0.5">PM</span></div></div><div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-outline text-[16px]">explore</span><span class="text-[11px] text-outline font-label-caps">Qibla: <span class="text-on-surface font-semibold">295° NW</span> (Makkah)</span></div><div class="flex items-center gap-1 text-[11px] text-outline font-body-sm italic"><span class="text-tertiary">"Indeed, prayer has been decreed upon believers at specified times."</span></div></div></section></div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full border-t border-white/5 bg-surface-container-lowest/80 backdrop-blur-md px-margin-desktop py-xl mt-auto ml-0 relative z-10"><div class="max-w-7xl mx-auto">
+  <div class="mb-xl">
+    <span class="font-headline-lg text-headline-lg text-primary font-extrabold block">InzaTech</span>
+    <p class="text-on-surface-variant font-body-md mt-1">The All-in-One AI Utility Platform</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-6 gap-lg mb-xl">
+    <div>
+      <h4 class="text-on-surface font-label-caps text-[12px] mb-md uppercase tracking-wider">Products</h4>
+      <ul class="space-y-2 text-outline text-body-sm">
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Explore Apps</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">AI Apps</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Widgets</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Portals</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">InzaTech Mobile</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Inzaghi's Sites (Old)</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-on-surface font-label-caps text-[12px] mb-md uppercase tracking-wider">Tools</h4>
+      <ul class="space-y-2 text-outline text-body-sm">
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Calculators</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Converters</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Formatters</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Generators</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">File Converter</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Utilities</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Tester Tools</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Developer Tools</a></li>
+        <li class=""><a class="text-primary font-medium hover:underline" href="#">All Tools →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-on-surface font-label-caps text-[12px] mb-md uppercase tracking-wider">AI Apps</h4>
+      <ul class="space-y-2 text-outline text-body-sm">
+        <li class=""><a class="hover:text-primary transition-colors" href="#">AI Chatbot</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">AI Writer</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">AI Code Generator</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">AI Image Generator</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">AI Prompt Library</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">AI Translator</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">AI OCR</a></li>
+        <li class=""><a class="text-primary font-medium hover:underline" href="#">All AI Apps →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-on-surface font-label-caps text-[12px] mb-md uppercase tracking-wider">Portals</h4>
+      <ul class="space-y-2 text-outline text-body-sm">
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Technology Tutorials</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Learning Portal</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">IT Project Lists</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Language Portal</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Career Portal</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Muslims Portal</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Documentation</a></li>
+        <li class=""><a class="text-primary font-medium hover:underline" href="#">All Portals →</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-on-surface font-label-caps text-[12px] mb-md uppercase tracking-wider">Company</h4>
+      <ul class="space-y-2 text-outline text-body-sm">
+        <li class=""><a class="hover:text-primary transition-colors" href="#">About</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Services</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Sitemap</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-on-surface font-label-caps text-[12px] mb-md uppercase tracking-wider">Legal</h4>
+      <ul class="space-y-2 text-outline text-body-sm">
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Disclaimer</a></li>
+        <li class=""><a class="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-y border-white/5 py-md mb-xl flex flex-col md:flex-row items-center gap-md">
+    <span class="text-on-surface font-label-caps text-[12px]">Social Media (Inzaghi's Media):</span>
+    <div class="flex gap-md">
+      <a href="#" class="text-outline hover:text-primary transition-colors font-body-sm">GitHub</a>
+      <a href="#" class="text-outline hover:text-primary transition-colors font-body-sm">LinkedIn</a>
+      <a href="#" class="text-outline hover:text-primary transition-colors font-body-sm">YouTube</a>
+      <a href="#" class="text-outline hover:text-primary transition-colors font-body-sm">Threads</a>
+      <a href="#" class="text-outline hover:text-primary transition-colors font-body-sm">Instagram</a>
+      <a href="#" class="text-outline hover:text-primary transition-colors font-body-sm">TikTok</a>
+      <a href="#" class="text-outline hover:text-primary transition-colors font-body-sm">X/Twitter</a>
+    </div>
+  </div>
+  <div class="flex flex-col md:flex-row justify-between items-center gap-md text-outline text-[11px] font-body-sm">
+    <p class="">© 2026 InzaTech. All rights reserved.</p>
+    <p class="">Powered by Next.js • React • Tailwind CSS • Notion API • Blogger API</p>
+    <p class="flex items-center gap-1">Made with <span class="text-error">❤️</span> in Indonesia</p>
+  </div>
+</div></footer>
+<script>
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const clockElement = document.getElementById('clock');
+        if (clockElement) {
+            clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+</script>
+
+
+
+
+
+
+
+
+</body></html>
