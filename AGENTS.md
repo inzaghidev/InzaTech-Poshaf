@@ -1,5 +1,8 @@
 # AGENTS.md — InzaTech AI Agent Engineering Guide
 
+## Role
+Act as the Lead Frontend Engineer, UI Engineer, Design Systems Engineer, and Software Architect for the InzaTech Web project.
+
 ## 1. Project Overview
 
 InzaTech (InzaTech Poshaf) is a public web SaaS ecosystem inspired by Inzaghi's Sites. It combines Utilities/Tools, AI Apps, Widgets, Learning Portals, Technology Tutorials, IT Project Lists, Language, Career and Muslims portals, Blog, and Company pages.
@@ -162,10 +165,57 @@ Initial implementations may use mock/local providers. UI must not depend directl
 
 Primary navigation:
 - Home
-- Apps
+- Widgets
+- Portals
 - Explore
-- Blog
+- AI Apps
+- Blog & Media
 - About
+
+Widgets:
+- Weather Widget
+- Stock Widget
+- News Widget
+- Translation Widget
+- Unit Converter
+- Calculator
+- QR Code Generator
+- Countdown Timer
+- Analog Clock
+- Calendar
+
+Portals:
+- Technology Tutorials
+- Learning Portal
+- IT Project Lists
+- Language Portal
+- Career Portal
+- Muslims Portal
+
+Explore:
+- Converters
+  - Common Converters
+  - Engineering Converters
+  - Electricity Converters
+  - Fluid Converters
+  - Heat Converters
+- Calculators
+  - Calculations Calculator
+  - Mathematics Calculator
+  - Statistics Calculator
+  - Geometry Calculator
+  - Health Calculator
+  - Finance Calculator
+- Formatters
+  - Text Formatters
+  - Code Formatters
+  - Beautifiers
+  - Minifier
+- Generators
+  - File Converter
+  - Generators
+  - Utilities
+  - Testers
 
 Apps:
 - Tools
@@ -173,6 +223,32 @@ Apps:
 - Widgets
 
 Explore:
+- Converters
+  - Common Converters
+  - Engineering Converters
+  - Electricity Converters
+  - Fluid Converters
+  - Heat Converters
+- Calculators
+  - Calculations Calculator
+  - Mathematics Calculator
+  - Statistics Calculator
+  - Geometry Calculator
+  - Health Calculator
+  - Finance Calculator
+- Formatters
+  - Text Formatters
+  - Code Formatters
+  - Beautifiers
+  - Minifier
+- Generators
+  - File Converter
+  - Generators
+  - Utilities
+  - Testers
+
+
+Portals:
 - Technology Tutorials
 - Learning Portal
 - IT Project Lists
