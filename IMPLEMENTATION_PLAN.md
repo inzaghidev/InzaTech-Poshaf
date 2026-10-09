@@ -496,25 +496,25 @@ Do not communicate important state through color alone.
 ## Phase 14 — Testing
 
 Test:
-- components
-- variants
-- routes
-- navigation
-- mobile menu
-- footer links
-- tools (representative tool correctness)
-- widgets
+- Components
+- Variants
+- Routes
+- Navigation
+- Mobile menu
+- Footer links
+- Tools (representative tool correctness)
+- Widgets
 - AI interfaces
-- portals
+- Portals
 - Blog Media
-- services
-- theme switching
-- theme persistence
-- semantic token behavior
-- responsive behavior
-- empty states
-- loading states
-- error states
+- Services
+- Theme switching
+- Theme persistence
+- Semantic token behavior
+- Responsive behavior
+- Empty states
+- Loading states
+- Error states
 
 Run:
 - lint
@@ -527,17 +527,17 @@ Run:
 Audit:
 - Server Components
 - Client Components
-- image optimization
-- lazy loading
-- code splitting
-- font loading
-- bundle size
-- unnecessary JavaScript
-- expensive calculations
-- repeated fetching
-- layout shifts
-- caching
-- rendering strategy
+- Image optimization
+- Lazy loading
+- Code splitting
+- Font loading
+- Bundle size
+- Unnecessary JavaScript
+- Expensive calculations
+- Repeated fetching
+- Layout shifts
+- Caching
+- Rendering strategy
 - API calls
 
 Prefer Server Components where possible.

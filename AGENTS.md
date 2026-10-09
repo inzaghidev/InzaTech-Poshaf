@@ -228,17 +228,17 @@ Initially support only Light and Dark. System theme detection is optional and no
 ## 8. Anti-Vibe-Coding Rules
 
 Avoid generic AI-generated visual patterns:
-- random gradients;
-- excessive purple/blue neon;
-- glowing borders everywhere;
-- excessive glassmorphism;
-- excessive rounded cards;
-- huge meaningless hero sections;
-- random icons;
-- inconsistent card/button styles;
-- inconsistent spacing/font sizes;
-- excessive shadows/animation;
-- dashboard cards where a simple content layout is more appropriate.
+- Random gradients;
+- Excessive purple/blue neon;
+- Glowing borders everywhere;
+- Excessive glassmorphism;
+- Excessive rounded cards;
+- Huge meaningless hero sections;
+- Random icons;
+- Inconsistent card/button styles;
+- Inconsistent spacing/font sizes;
+- Excessive shadows/animation;
+- Dashboard cards where a simple content layout is more appropriate.
 
 Visual effects must have a product or hierarchy purpose.
 
