@@ -13,16 +13,27 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: { default: "InzaTech | The All-in-One AI Utility Platform", template: "%s | InzaTech" },
-  description: "A practical ecosystem of tools, widgets, portals, AI apps, and technical resources.",
+  title: {
+    default: "InzaTech | The All-in-One AI Utility Platform",
+    template: "%s | InzaTech",
+  },
+  description:
+    "A practical ecosystem of tools, widgets, portals, AI apps, and technical resources.",
 };
 
-const themeScript = "try { const theme = localStorage.getItem('inzatech-theme'); document.documentElement.classList.toggle('dark', theme === 'dark'); } catch (error) {}";
+const themeScript =
+  "try { const theme = localStorage.getItem('inzatech-theme'); document.documentElement.classList.toggle('dark', theme === 'dark'); } catch (error) {}";
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${mono.variable}`}>
-      <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${mono.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>{children}</body>
     </html>
   );
