@@ -36,7 +36,7 @@ export default function ExplorePage() {
                 <Link
                   key={item}
                   href={`/explore/${slug(item)}`}
-                  className="group flex items-center justify-between border border-border bg-card p-5 transition-colors hover:border-primary/50 hover:bg-secondary"
+                  className="group flex items-center justify-between border border-border bg-card rounded-xl p-5 transition-colors hover:border-primary/50 hover:bg-secondary"
                 >
                   <span className="flex items-center gap-3 font-medium">
                     <Wrench

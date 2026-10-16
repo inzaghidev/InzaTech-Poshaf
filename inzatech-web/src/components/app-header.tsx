@@ -78,4 +78,3 @@ export function AppHeader() {
   );
 }
 
-export const Header = AppHeader;

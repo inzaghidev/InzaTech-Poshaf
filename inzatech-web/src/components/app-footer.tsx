@@ -96,4 +96,3 @@ export function AppFooter() {
   );
 }
 
-export const Footer = AppFooter;

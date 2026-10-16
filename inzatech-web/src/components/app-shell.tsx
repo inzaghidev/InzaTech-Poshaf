@@ -11,6 +11,5 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-export { AppHeader } from "@/components/app-header";
-export { AppFooter } from "@/components/app-footer";
+
 
