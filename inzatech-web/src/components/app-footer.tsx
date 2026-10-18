@@ -1,4 +1,27 @@
 import Link from "next/link";
+import { GitHubBtn } from "@/components/github-btn";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaYoutube,
+  FaThreads,
+  FaInstagram,
+  FaTiktok,
+  FaXTwitter,
+  FaSpotify,
+} from "react-icons/fa6";
+import type { IconType } from "react-icons";
+
+const socialIcons: Array<{ name: string; href: string; icon: IconType }> = [
+  { name: "GitHub", href: "https://github.com/inzaghidev", icon: FaGithub },
+  { name: "LinkedIn", href: "linkedin.com/in/inzaghi-posuma-al-kahfi-b2613528b", icon: FaLinkedin },
+  { name: "YouTube", href: "https://www.youtube.com/@enzavlogpost", icon: FaYoutube },
+  { name: "Threads", href: "https://www.threads.com/@enzapost", icon: FaThreads },
+  { name: "Instagram", href: "https://www.instagram.com/enzapost", icon: FaInstagram },
+  { name: "TikTok", href: "https://www.tiktok.com/@enzapostmedia", icon: FaTiktok },
+  { name: "X/Twitter", href: "https://x.com/InzaTechMedia", icon: FaXTwitter },
+  { name: "Spotify", href: "https://open.spotify.com/user/31h7fde74y7or2zf4unyyerbopf4", icon: FaSpotify },
+];
 
 export const footerColumns: Array<[string, string[]]> = [
   [
@@ -35,18 +58,6 @@ export const footerColumns: Array<[string, string[]]> = [
   [
     "Legal",
     ["Privacy Policy", "Terms of Service", "Disclaimer", "Cookie Policy"],
-  ],
-  [
-    "Social",
-    [
-      "GitHub",
-      "LinkedIn",
-      "YouTube",
-      "Threads",
-      "Instagram",
-      "TikTok",
-      "X / Twitter",
-    ],
   ],
 ];
 
@@ -86,10 +97,40 @@ export function AppFooter() {
             </div>
           ))}
         </div>
-        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:flex-wrap sm:justify-between">
+        {/* Social media icons */}
+        <div className="mt-2 mb-12 flex flex-col items-center justify-between gap-4 pt-6 sm:flex-row">
+          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">
+            Social Media (Inzaghi&apos;s Media)
+          </span>
+          <div className="flex items-center gap-4">
+            {socialIcons.map(({ name, href, icon: Icon }) => (
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={name}
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <Icon className="h-5 w-5" />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Copyright & GitHub */}
+        <div className="flex flex-col gap-3 pt-6 border-t border-border text-sm text-muted-foreground sm:flex-row sm:flex-wrap sm:justify-between">
           <p>© 2026 InzaTech. All rights reserved.</p>
           <p>Powered by Next.js • React • Tailwind CSS</p>
           <p>Made with ❤️ in Indonesia</p>
+          <GitHubBtn
+            href="https://github.com/inzaghidev/InzaTech-Poshaf"
+            data-color-scheme="no-preference: light; light: light; dark: dark;"
+            data-size="large"
+            aria-label="Look at @inzaghidev"
+          >
+            Look at @inzaghidev
+          </GitHubBtn>
         </div>
       </div>
     </footer>
