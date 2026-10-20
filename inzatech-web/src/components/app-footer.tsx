@@ -14,7 +14,7 @@ import type { IconType } from "react-icons";
 
 const socialIcons: Array<{ name: string; href: string; icon: IconType }> = [
   { name: "GitHub", href: "https://github.com/inzaghidev", icon: FaGithub },
-  { name: "LinkedIn", href: "linkedin.com/in/inzaghi-posuma-al-kahfi-b2613528b", icon: FaLinkedin },
+  { name: "LinkedIn", href: "https://linkedin.com/in/inzaghi-posuma-al-kahfi-b2613528b", icon: FaLinkedin },
   { name: "YouTube", href: "https://www.youtube.com/@enzavlogpost", icon: FaYoutube },
   { name: "Threads", href: "https://www.threads.com/@enzapost", icon: FaThreads },
   { name: "Instagram", href: "https://www.instagram.com/enzapost", icon: FaInstagram },

@@ -135,6 +135,13 @@ export const aiApps: CatalogItem[] = [
       "A distraction-light space for drafting, revising, and outlining.",
     meta: "Mock interface",
   },
+  {
+    slug: "prompt-library",
+    title: "AI Prompt Library",
+    description:
+      "Curated prompts and templates to accelerate your AI workflow.",
+    meta: "Mock interface",
+  },
 ];
 
 export const toolGroups = [
@@ -188,6 +195,22 @@ export const tools: CatalogItem[] = toolGroups.flatMap((group) =>
 );
 
 export const articles: CatalogItem[] = [
+  {
+    slug: "inzaghis-blog",
+    title: "Inzaghi's Blog",
+    description:
+      "Thoughts, updates, and deep dives into modern web technologies and software engineering.",
+    category: "Blog",
+    meta: "Inzaghi's Blog Aggregator",
+  },
+  {
+    slug: "inzaghis-media",
+    title: "Inzaghi's Media",
+    description:
+      "Curated media publications, video tutorials, audio podcasts, and technical streams.",
+    category: "Media",
+    meta: "Inzaghi's Media Hub",
+  },
   {
     slug: "building-practical-ai-workflows",
     title: "Building practical AI workflows",
