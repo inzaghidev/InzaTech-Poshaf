@@ -26,7 +26,7 @@ export default function ExplorePage() {
       </section>
       <section className="mx-auto max-w-7xl space-y-10 px-5 py-12 sm:px-6 lg:px-8 lg:py-16">
         {toolGroups.map((group) => (
-          <section key={group.title}>
+          <section key={group.title} id={slug(group.title)}>
             <div className="mb-5">
               <h2 className="text-2xl font-semibold">{group.title}</h2>
               <p className="mt-1 text-muted-foreground">{group.description}</p>

@@ -23,42 +23,90 @@ const socialIcons: Array<{ name: string; href: string; icon: IconType }> = [
   { name: "Spotify", href: "https://open.spotify.com/user/31h7fde74y7or2zf4unyyerbopf4", icon: FaSpotify },
 ];
 
-export const footerColumns: Array<[string, string[]]> = [
-  [
-    "Products",
-    ["Explore", "AI Apps", "Widgets", "Portals", "Blog Media", "Services"],
-  ],
-  [
-    "Tools",
-    [
-      "Calculators",
-      "Converters",
-      "Formatters",
-      "Generators",
-      "Utilities",
-      "All Tools",
+export interface FooterLink {
+  label: string;
+  href: string;
+  isExternal?: boolean;
+  target?: string;
+}
+
+export interface FooterColumn {
+  title: string;
+  links: FooterLink[];
+}
+
+export const footerColumns: FooterColumn[] = [
+  {
+    title: "Products",
+    links: [
+      { label: "Explore", href: "/explore" },
+      { label: "AI Apps", href: "/ai-apps" },
+      { label: "Widgets", href: "/widgets" },
+      { label: "Portals", href: "/portals" },
+      { label: "Blog Media", href: "/blog" },
+      { label: "Services", href: "/services" },
     ],
-  ],
-  [
-    "AI Apps",
-    ["AI Chatbot", "AI Writer", "AI Code Generator", "AI Image Generator"],
-  ],
-  [
-    "Portals",
-    [
-      "Technology Tutorials",
-      "Learning Portal",
-      "IT Project Lists",
-      "Language Portal",
-      "Career Portal",
-      "Muslims Portal",
+  },
+  {
+    title: "Tools",
+    links: [
+      { label: "Calculators", href: "/explore#calculators" },
+      { label: "Converters", href: "/explore#converters" },
+      { label: "Formatters", href: "/explore#formatters" },
+      { label: "Generators", href: "/explore#other-tools" },
+      { label: "Utilities", href: "/explore/utilities" },
+      { label: "All Tools", href: "/explore" },
     ],
-  ],
-  ["Company", ["About", "Contact", "Sitemap"]],
-  [
-    "Legal",
-    ["Privacy Policy", "Terms of Service", "Disclaimer", "Cookie Policy"],
-  ],
+  },
+  {
+    title: "AI Apps",
+    links: [
+      { label: "AI Chatbot", href: "/ai-apps/chatbot" },
+      { label: "AI Writer", href: "/ai-apps/writer" },
+      { label: "AI Code Generator", href: "/ai-apps/code-generator" },
+      { label: "AI Image Generator", href: "/ai-apps/image-generator" },
+      { label: "AI Prompt Library", href: "/ai-apps/prompt-library" },
+    ],
+  },
+  {
+    title: "Portals",
+    links: [
+      { label: "Technology Tutorials", href: "/portals/technology-tutorials" },
+      { label: "Learning Portal", href: "/portals/learning" },
+      { label: "IT Project Lists", href: "/portals/it-project-lists" },
+      { label: "Language Portal", href: "/portals/language" },
+      { label: "Career Portal", href: "/portals/career" },
+      { label: "Muslims Portal", href: "/portals/muslims" },
+      { label: "All Portals", href: "/portals" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Services", href: "/services" },
+      { label: "Contact", href: "/contact" },
+      { label: "Sitemap", href: "/sitemap" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms-of-service" },
+      { label: "Disclaimer", href: "/disclaimer" },
+      { label: "Cookie Policy", href: "/cookie-policy" },
+    ],
+  },
+  {
+    title: "Other Links",
+    links: [
+      { label: "Old Inzaghi's Sites (Google Sites)", href: "https://sites.google.com/view/inzaghis-sites", target: "_blank" },
+      { label: "Inzaghi's Sites (InfinityFree)", href: "https://inzaghi.wuaze.com", target: "_blank" },
+      { label: "Inzaghi's Blog Aggregator", href: "https://inzaghis-blog-aggregator.vercel.app", target: "_blank" },
+      { label: "Linktree", href: "https://linktr.ee/inzaghigroup", target: "_blank" },
+    ],
+  },
 ];
 
 export function AppFooter() {
@@ -77,22 +125,39 @@ export function AppFooter() {
           </p>
         </div>
         <div className="grid grid-cols-2 gap-x-6 gap-y-9 sm:grid-cols-3 lg:grid-cols-6">
-          {footerColumns.map(([title, links]) => (
-            <div key={title}>
+          {footerColumns.map((col) => (
+            <div key={col.title}>
               <h2 className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">
-                {title}
+                {col.title}
               </h2>
               <ul className="mt-4 space-y-3">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
+                {col.links.map((link) => {
+                  const isExternal =
+                    link.isExternal ??
+                    (Boolean(link.target) || link.href.startsWith("http"));
+
+                  return (
+                    <li key={link.label}>
+                      {isExternal ? (
+                        <a
+                          href={link.href}
+                          target={link.target ?? "_blank"}
+                          rel="noopener noreferrer"
+                          className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
